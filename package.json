@@ -7,12 +7,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "adm-zip": "^0.4.7",
     "firebase": "^4.8.0",
+    "plist": "^2.1.0",
     "react": "16.0.0",
     "react-native": "0.51.0",
     "react-native-fbsdk": "^0.6.3",
     "react-redux": "^5.0.6",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "xcode": "^1.0.0"
   },
   "devDependencies": {
     "babel-jest": "21.2.0",

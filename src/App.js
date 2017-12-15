@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import firebase from 'firebase';
 import reducers from './reducers';
+import FBLoginButton from './components/FBLoginButton';
 
 
 export default class App extends Component {
@@ -24,6 +25,9 @@ export default class App extends Component {
       <Provider store={createStore(reducers)}>
         <View>
           <Text style={{ paddingTop: 20 }}>Hello World</Text>
+          <View>
+            <FBLoginButton />
+          </View>
         </View>
       </Provider>
     );

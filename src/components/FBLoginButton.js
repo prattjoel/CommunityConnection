@@ -8,6 +8,7 @@ export default class FBLoginButton extends Component {
   render() {
     return (
       <LoginButton
+        // style={{ width: 100 }}
         publishPermissions={['publish_actions']}
         onLoginFinished={
           (error, result) => {

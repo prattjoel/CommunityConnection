@@ -23,8 +23,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={createStore(reducers)}>
-        <View>
-          <Text style={{ paddingTop: 20 }}>Hello World</Text>
+        <View style={styles.containerStyle}>
           <View>
             <FBLoginButton />
           </View>
@@ -33,3 +32,12 @@ export default class App extends Component {
     );
   }
 }
+
+const styles = {
+  containerStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#d5e6f4'
+  }
+};

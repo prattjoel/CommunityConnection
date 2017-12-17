@@ -8,20 +8,19 @@ export default class FBLoginButton extends Component {
   render() {
     return (
       <LoginButton
-        // style={{ width: 100 }}
-        publishPermissions={['publish_actions']}
+        readPermissions={['public_profile']}
         onLoginFinished={
           (error, result) => {
             if (error) {
-              alert(`Login failed with error: ${result.error}`);
+              console.log(`Login failed with error: ${result.error}`);
             } else if (result.isCancelled) {
-              alert('Login was cancelled');
+              console.log('Login was cancelled');
             } else {
-              alert(`Login was successful with permissions: ${result.grantedPermissions}`);
+              console.log(`Login was successful with permissions: ${result.grantedPermissions}`);
             }
           }
         }
-        onLogoutFinished={() => alert('User logged out')}
+        onLogoutFinished={() => console.log('User logged out')}
       />
     );
   }

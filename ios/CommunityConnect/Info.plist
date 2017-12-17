@@ -25,16 +25,16 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb[1535493123194614]</string>
+				<string>fb1535493123194614</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>[1535493123194614]</string>
+	<string>1535493123194614</string>
 	<key>FacebookDisplayName</key>
-	<string>[CommunityConnect]</string>
+	<string>CommunityConnect</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

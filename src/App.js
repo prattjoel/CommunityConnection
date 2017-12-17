@@ -6,6 +6,7 @@ import firebase from 'firebase';
 import reducers from './reducers';
 import FBLoginButton from './components/FBLoginButton';
 
+console.ignoredYellowBox = ['Remote debugger'];
 
 export default class App extends Component {
   componentWillMount() {

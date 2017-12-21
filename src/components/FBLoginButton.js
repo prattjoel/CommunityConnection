@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { alert } from 'react-native';
-import { LoginButton } from 'react-native-fbsdk';
-
-// const FBSDK = require('react-native-fbsdk');
+import {
+  LoginButton,
+  AccessToken
+} from 'react-native-fbsdk';
 
 export default class FBLoginButton extends Component {
   render() {
@@ -17,6 +17,12 @@ export default class FBLoginButton extends Component {
               console.log('Login was cancelled');
             } else {
               console.log(`Login was successful with permissions: ${result.grantedPermissions}`);
+              AccessToken.getCurrentAccessToken().then(
+                (data) => {
+                  const token = data.accessToken.toString();
+                  console.log(`User token is: ${token}`);
+                }
+              );
             }
           }
         }

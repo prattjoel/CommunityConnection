@@ -9,12 +9,16 @@ import {
 import User from '../User';
 
 export default class FBLoginButton extends Component {
+// Login user to firebase using acces token from Facebook login
   _firebaseLogin = (token) => {
     const credential = firebase.auth.FacebookAuthProvider.credential(token);
     firebase.auth().signInWithCredential(credential)
       .then((result) => {
         console.log('result is: ');
         console.log(result);
+        this._createUser(token);
+        // console.log(user);
+        // console.log(`User token is: ${token}`);
       })
       .catch((error) => {
         console.log('error is: ');
@@ -22,6 +26,7 @@ export default class FBLoginButton extends Component {
       });
   };
 
+//Finish login to Facebook and obtain acces token for firebase login
   _fbLoginComplete = (error, result) => {
     console.log('login finished called');
     if (error) {
@@ -34,14 +39,12 @@ export default class FBLoginButton extends Component {
         (data) => {
           const token = data.accessToken.toString();
           const user = this._firebaseLogin(token);
-          this._createUser(token);
-          // console.log(user);
-          // console.log(`User token is: ${token}`);
         }
       );
     }
   };
 
+// Create user instance from FB graph API request
   _createUser = (token) => {
     const graphUrl = `https://graph.facebook.com/v2.11/me?fields=id,name,email&access_token=${token}`;
     console.log(graphUrl);
@@ -53,9 +56,10 @@ export default class FBLoginButton extends Component {
           response.json()
             .then(
               (json) => {
-                  console.log('currentUser is:');
                   const currentUser = new User(json.name, json.email, json.id);
-                  console.log(currentUser);
+                  // console.log('currentUser is:');
+                  // console.log(currentUser);
+                  this._addUserToDatabase(currentUser);
               }
             );
         })
@@ -65,6 +69,16 @@ export default class FBLoginButton extends Component {
           console.log(error);
         }
       );
+  };
+
+//Add the user to firebase database
+  _addUserToDatabase = (currentUser) => {
+    const { userID, email, name } = currentUser;
+    const database = firebase.database();
+    database.ref(`users/${userID}`).set({
+      name,
+      email
+    });
   };
 
   render() {

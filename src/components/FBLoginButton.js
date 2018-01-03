@@ -6,6 +6,7 @@ import {
   LoginButton,
   AccessToken
 } from 'react-native-fbsdk';
+import User from '../User';
 
 export default class FBLoginButton extends Component {
   _firebaseLogin = (token) => {
@@ -34,8 +35,8 @@ export default class FBLoginButton extends Component {
           const token = data.accessToken.toString();
           const user = this._firebaseLogin(token);
           this._createUser(token);
-          console.log(user);
-          console.log(`User token is: ${token}`);
+          // console.log(user);
+          // console.log(`User token is: ${token}`);
         }
       );
     }
@@ -52,12 +53,9 @@ export default class FBLoginButton extends Component {
           response.json()
             .then(
               (json) => {
-                  console.log('id is:');
-                  console.log(json.id);
-                  console.log('email is:');
-                  console.log(json.email);
-                  console.log('name is:');
-                  console.log(json.name);
+                  console.log('currentUser is:');
+                  const currentUser = new User(json.name, json.email, json.id);
+                  console.log(currentUser);
               }
             );
         })

@@ -14,9 +14,13 @@ export default class FBLoginButton extends Component {
     const credential = firebase.auth.FacebookAuthProvider.credential(token);
     firebase.auth().signInWithCredential(credential)
       .then((result) => {
-        console.log('result is: ');
-        console.log(result);
-        this._createUser(token);
+        // console.log('result is: ');
+        // console.log(result);
+        const { displayName, uid } = result;
+        // console.log('name and id are: ');
+        // console.log(displayName);
+        // console.log(uid);
+        this._createUser(displayName, uid, token);
         // console.log(user);
         // console.log(`User token is: ${token}`);
       })
@@ -44,19 +48,21 @@ export default class FBLoginButton extends Component {
     }
   };
 
-// Create user instance from FB graph API request
-  _createUser = (token) => {
+// Create user instance from FB graph API request and Firebase auth
+  _createUser = (name, userID, token) => {
     const graphUrl = `https://graph.facebook.com/v2.11/me?fields=id,name,email&access_token=${token}`;
-    console.log(graphUrl);
+    // console.log(graphUrl);
     fetch(graphUrl)
       .then(
         (response) => {
-          console.log('response from graph request is:');
-          console.log(response);
+          // console.log('response from graph request is:');
+          // console.log(response);
           response.json()
             .then(
               (json) => {
-                  const currentUser = new User(json.name, json.email, json.id);
+                // console.log('json is:');
+                // console.log(json);
+                  const currentUser = new User(name, json.email, userID);
                   // console.log('currentUser is:');
                   // console.log(currentUser);
                   this._addUserToDatabase(currentUser);
@@ -75,7 +81,7 @@ export default class FBLoginButton extends Component {
   _addUserToDatabase = (currentUser) => {
     const { userID, email, name } = currentUser;
     const database = firebase.database();
-    database.ref(`users/${userID}`).set({
+    database.ref(`users/${userID}`).update({
       name,
       email
     });

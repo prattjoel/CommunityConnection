@@ -33,11 +33,40 @@ export default class FBLoginButton extends Component {
         (data) => {
           const token = data.accessToken.toString();
           const user = this._firebaseLogin(token);
+          this._createUser(token);
           console.log(user);
           console.log(`User token is: ${token}`);
         }
       );
     }
+  };
+
+  _createUser = (token) => {
+    const graphUrl = `https://graph.facebook.com/v2.11/me?fields=id,name,email&access_token=${token}`;
+    console.log(graphUrl);
+    fetch(graphUrl)
+      .then(
+        (response) => {
+          console.log('response from graph request is:');
+          console.log(response);
+          response.json()
+            .then(
+              (json) => {
+                  console.log('id is:');
+                  console.log(json.id);
+                  console.log('email is:');
+                  console.log(json.email);
+                  console.log('name is:');
+                  console.log(json.name);
+              }
+            );
+        })
+      .catch(
+        (error) => {
+          console.log('error with graph request: ');
+          console.log(error);
+        }
+      );
   };
 
   render() {

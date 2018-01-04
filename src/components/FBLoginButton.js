@@ -9,6 +9,9 @@ import {
 import User from '../User';
 
 export default class FBLoginButton extends Component {
+  componentWillMount() {
+    this._isLoggedin();
+  }
 // Login user to firebase using acces token from Facebook login
   _firebaseLogin = (token) => {
     const credential = firebase.auth.FacebookAuthProvider.credential(token);
@@ -65,7 +68,7 @@ export default class FBLoginButton extends Component {
                   const currentUser = new User(name, json.email, userID);
                   // console.log('currentUser is:');
                   // console.log(currentUser);
-                  this._addUserToDatabase(currentUser);
+                    this._addUserToDatabase(currentUser);
               }
             );
         })
@@ -86,6 +89,54 @@ export default class FBLoginButton extends Component {
       email
     });
   };
+
+// Add listener to see if the user is signed in to Firebase
+  _isLoggedin = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log('signed in user:');
+        console.log(user);
+    //     const databaseRef = firebase.database().ref('users');
+    //     console.log('databaseRef:');
+    //     console.log(databaseRef);
+    //     databaseRef.once('value')
+    //       .then((snapshot) => {
+    //         console.log(snapshot);
+    //         const hasUser = snapshot.hasChild(`${user.uid}`);
+    //         console.log('hasUser is');
+    //         console.log(hasUser);
+    //         // return (hasUser);
+    //       })
+    //       .catch((error) => {
+    //         console.log('error checking for child:');
+    //         console.log(error);
+    //       });
+    //   } else {
+    //     console.log('user not signed in');
+    //   }
+      }
+    });
+  };
+  //
+  // _isRepeatUser = (userID) => {
+  //   debugger;
+  //   console.log('_isRepeatUser called');
+  //   const databaseRef = firebase.database().ref('users');
+  //   console.log('databaseRef:');
+  //   console.log(databaseRef);
+  //   databaseRef.once('value')
+  //     .then((snapshot) => {
+  //       console.log(snapshot);
+  //       const hasUser = snapshot.hasChild(`${userID}`);
+  //       console.log('hasUser is');
+  //       console.log(hasUser);
+  //       return (hasUser);
+  //     })
+  //     .catch((error) => {
+  //       console.log('error checking for child:');
+  //       console.log(error);
+  //     });
+  // };
 
   render() {
     return (

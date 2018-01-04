@@ -95,25 +95,25 @@ export default class FBLoginButton extends Component {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         console.log('signed in user:');
-        console.log(user);
-    //     const databaseRef = firebase.database().ref('users');
-    //     console.log('databaseRef:');
-    //     console.log(databaseRef);
-    //     databaseRef.once('value')
-    //       .then((snapshot) => {
-    //         console.log(snapshot);
-    //         const hasUser = snapshot.hasChild(`${user.uid}`);
-    //         console.log('hasUser is');
-    //         console.log(hasUser);
-    //         // return (hasUser);
-    //       })
-    //       .catch((error) => {
-    //         console.log('error checking for child:');
-    //         console.log(error);
-    //       });
-    //   } else {
-    //     console.log('user not signed in');
-    //   }
+        const userID = user.uid;
+        const databaseRef = firebase.database().ref(`users/${user.uid}`);
+        // console.log('databaseRef:');
+        // console.log(databaseRef);
+        databaseRef.once('value')
+          .then((snapshot) => {
+            // console.log('snapshot:');
+            // console.log(snapshot);
+            const name = snapshot.child('name').val();
+            const email = snapshot.child('email').val();
+            const currentUser = new User(name, email, userID);
+            // console.log(currentUser);
+          })
+          .catch((error) => {
+            console.log('error checking for child:');
+            console.log(error);
+          });
+      } else {
+        console.log('user not signed in');
       }
     });
   };

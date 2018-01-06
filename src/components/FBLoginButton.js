@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import { View } from 'react-native';
 import {
   LoginButton,
   AccessToken
@@ -140,11 +141,26 @@ export default class FBLoginButton extends Component {
 
   render() {
     return (
-      <LoginButton
-        readPermissions={['public_profile']}
-        onLoginFinished={this._fbLoginComplete.bind(this)}
-        onLogoutFinished={() => console.log('User logged out')}
-      />
+        <View style={styles.containerStyle}>
+          <LoginButton
+            // style={styles.buttonStyle}
+            readPermissions={['public_profile']}
+            onLoginFinished={this._fbLoginComplete.bind(this)}
+            onLogoutFinished={() => console.log('User logged out')}
+          />
+        </View>
     );
   }
 }
+
+const styles = {
+  containerStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#d5e6f4'
+  },
+  // buttonStyle: {
+  //   justifySelf: 'center'
+  // }
+};

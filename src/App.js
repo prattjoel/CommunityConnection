@@ -25,10 +25,8 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={createStore(reducers)}>
-         <View>
-          <View>
+         <View style={{ flex: 1 }}>
             <Router />
-          </View>
          </View>
       </Provider>
     );

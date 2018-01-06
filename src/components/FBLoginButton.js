@@ -143,7 +143,6 @@ export default class FBLoginButton extends Component {
     return (
         <View style={styles.containerStyle}>
           <LoginButton
-            // style={styles.buttonStyle}
             readPermissions={['public_profile']}
             onLoginFinished={this._fbLoginComplete.bind(this)}
             onLogoutFinished={() => console.log('User logged out')}
@@ -158,9 +157,9 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#d5e6f4'
+    backgroundColor: 'black',
+    // backgroundColor: '#d5e6f4',
+    // borderWidth: 2,
+    // borderColor: 'red'
   },
-  // buttonStyle: {
-  //   justifySelf: 'center'
-  // }
 };

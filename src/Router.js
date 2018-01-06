@@ -6,7 +6,7 @@ import FBLoginButton from './components/FBLoginButton';
 
 const RouterComponent = () => {
   return (
-    <Router sceneStyle={{ paddingTop: 65 }}>
+    <Router>
       <Stack key='root'>
         <Scene
           key='FBLogin'
@@ -17,14 +17,5 @@ const RouterComponent = () => {
     </Router>
   );
 };
-
-// const styles = {
-//   containerStyle: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#d5e6f4'
-//   }
-// };
 
 export default RouterComponent;

@@ -7,6 +7,7 @@ import {
   LoginButton,
   AccessToken
 } from 'react-native-fbsdk';
+import { Actions } from 'react-native-router-flux';
 import User from '../User';
 
 export default class FBLoginButton extends Component {
@@ -107,6 +108,7 @@ export default class FBLoginButton extends Component {
             const name = snapshot.child('name').val();
             const email = snapshot.child('email').val();
             const currentUser = new User(name, email, userID);
+            Actions.HomePage();
             // console.log(currentUser);
           })
           .catch((error) => {

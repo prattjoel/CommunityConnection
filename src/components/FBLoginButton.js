@@ -39,6 +39,9 @@ export default class FBLoginButton extends Component {
     firebase.auth().signOut().then(
       () => {
         console.log('user Signed Out of firebase');
+        this.props.updateSignIn(false);
+        console.log('user sign in status after firebase logout');
+        console.log(this.props.isSignedIn);
     }).catch(
       (error) => {
         console.log('firebase sign out error');

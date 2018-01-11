@@ -110,6 +110,9 @@ export default class FBLoginButton extends Component {
             const name = snapshot.child('name').val();
             const email = snapshot.child('email').val();
             const currentUser = new User(name, email, userID);
+            this.props.updateSignIn(true);
+            console.log('isSignedIn after logged in');
+            console.log(this.props.isSignedIn);
             Actions.HomePage();
             // console.log(currentUser);
           })

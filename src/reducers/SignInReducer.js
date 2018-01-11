@@ -5,8 +5,10 @@ const signIn = (state = { isSignedIn: false }, action) => {
   console.log('signIn reducer called');
   switch (action.type) {
     case SIGN_IN_USER:
-      console.log('state for SIGN_IN_USER set');
-      return ([...state, { isSignedin: action.isSignedIn }]);
+      // console.log('state for SIGN_IN_USER set');
+      // console.log('action called');
+      // console.log(action.isSignedIn);
+      return ({ ...state, isSignedIn: action.isSignedIn });
     default:
       console.log('default state returned');
       console.log(state);

@@ -5,8 +5,8 @@ import { signInUser } from '../actions';
 import FBLoginButton from './FBLoginButton';
 
 const mapStateToProps = state => {
-  console.log('mapStateToProps called');
-  console.log(state.signIn.isSignedIn);
+  // console.log('mapStateToProps called');
+  // console.log(state.signIn);
   return (
     { isSignedIn: state.signIn.isSignedIn }
   );

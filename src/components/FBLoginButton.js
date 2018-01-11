@@ -35,6 +35,17 @@ export default class FBLoginButton extends Component {
       });
   };
 
+  _firebaseLogout = () => {
+    firebase.auth().signOut().then(
+      () => {
+        console.log('user Signed Out of firebase');
+    }).catch(
+      (error) => {
+        console.log('firebase sign out error');
+        console.log(error);
+    });
+  };
+
 //Finish login to Facebook and obtain acces token for firebase login
   _fbLoginComplete = (error, result) => {
     console.log('login finished called');
@@ -114,7 +125,7 @@ export default class FBLoginButton extends Component {
             console.log('isSignedIn after logged in');
             console.log(this.props.isSignedIn);
             Actions.HomePage();
-            // console.log(currentUser);
+            console.log(currentUser);
           })
           .catch((error) => {
             console.log('error checking for child:');
@@ -125,26 +136,6 @@ export default class FBLoginButton extends Component {
       }
     });
   };
-  //
-  // _isRepeatUser = (userID) => {
-  //   debugger;
-  //   console.log('_isRepeatUser called');
-  //   const databaseRef = firebase.database().ref('users');
-  //   console.log('databaseRef:');
-  //   console.log(databaseRef);
-  //   databaseRef.once('value')
-  //     .then((snapshot) => {
-  //       console.log(snapshot);
-  //       const hasUser = snapshot.hasChild(`${userID}`);
-  //       console.log('hasUser is');
-  //       console.log(hasUser);
-  //       return (hasUser);
-  //     })
-  //     .catch((error) => {
-  //       console.log('error checking for child:');
-  //       console.log(error);
-  //     });
-  // };
 
   render() {
     return (
@@ -152,7 +143,7 @@ export default class FBLoginButton extends Component {
           <LoginButton
             readPermissions={['public_profile']}
             onLoginFinished={this._fbLoginComplete.bind(this)}
-            onLogoutFinished={() => console.log('User logged out')}
+            onLogoutFinished={this._firebaseLogout.bind(this)}
           />
         </View>
     );

@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { Scene, Stack, Router } from 'react-native-router-flux';
-import FBLoginButton from './components/FBLoginButton';
+// import FBLoginButton from './components/FBLoginButton';
+import Login from './components/Login';
 import Home from './components/Home';
 
 const RouterComponent = () => {
@@ -11,7 +12,7 @@ const RouterComponent = () => {
       <Stack key='root'>
         <Scene
           key='FBLogin'
-          component={FBLoginButton}
+          component={Login}
           title='Facebook Login'
         />
         <Scene

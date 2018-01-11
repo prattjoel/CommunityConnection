@@ -94,6 +94,8 @@ export default class FBLoginButton extends Component {
 
 // Add listener to see if the user is signed in to Firebase
   _isLoggedin = () => {
+    console.log('isSignedIn in _isLoggedin');
+    console.log(this.props.isSignedIn);
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         console.log('signed in user:');

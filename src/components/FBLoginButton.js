@@ -2,7 +2,10 @@
 
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { View } from 'react-native';
+import {
+  View,
+  StyleSheet
+} from 'react-native';
 import {
   LoginButton,
   AccessToken
@@ -153,14 +156,11 @@ export default class FBLoginButton extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
-    // backgroundColor: '#d5e6f4',
-    // borderWidth: 2,
-    // borderColor: 'red'
+    backgroundColor: '#192D59',
   },
-};
+});

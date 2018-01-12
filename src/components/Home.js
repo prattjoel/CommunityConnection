@@ -1,13 +1,17 @@
 'use-strict';
 
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { View } from 'react-native';
 import MessageList from './MessageList';
+import MessageInput from './MessageInput';
 
 export default class HomePage extends Component {
   render() {
     return (
-      <MessageList />
+      <View style={{ flex: 1 }}>
+        <MessageList />
+        <MessageInput />
+      </View>
     );
   }
 }

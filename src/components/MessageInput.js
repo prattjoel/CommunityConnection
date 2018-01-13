@@ -1,20 +1,27 @@
 'use-strict';
 
-import React, { Component } from 'react';
-import { TextInput } from 'react-native';
+import { connect } from 'react-redux';
+import { messageChanged } from '../actions/MessageActions';
+import MessageInputField from './MessageInputField';
 
-export default class MessageInput extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { text: '' };
-  }
-  render() {
-    return (
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        placeholder='Type Message Here'
-        onChangeText={(text) => this.setState({ text })}
-      />
-    );
-  }
-}
+const mapStateToProps = state => {
+  // debugger;
+  return (
+    { message: state.message.messageText }
+  );
+};
+
+const mapDispatchToProps = dispatch => {
+  return (
+    { updateMessageText: text => {
+      dispatch(messageChanged(text));
+    }
+  });
+};
+
+const MessageInput = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MessageInputField);
+
+export default MessageInput;

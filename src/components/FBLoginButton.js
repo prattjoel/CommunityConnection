@@ -43,8 +43,8 @@ export default class FBLoginButton extends Component {
       () => {
         console.log('user Signed Out of firebase');
         this.props.updateSignIn(false);
-        console.log('user sign in status after firebase logout');
-        console.log(this.props.isSignedIn);
+        // console.log('user sign in status after firebase logout');
+        // console.log(this.props.isSignedIn);
     }).catch(
       (error) => {
         console.log('firebase sign out error');
@@ -54,13 +54,13 @@ export default class FBLoginButton extends Component {
 
 //Finish login to Facebook and obtain acces token for firebase login
   _fbLoginComplete = (error, result) => {
-    console.log('login finished called');
+    // console.log('login finished called');
     if (error) {
       console.log(`Login failed with error: ${result.error}`);
     } else if (result.isCancelled) {
       console.log('Login was cancelled');
     } else {
-      console.log(`Login was successful with permissions: ${result.grantedPermissions}`);
+      // console.log(`Login was successful with permissions: ${result.grantedPermissions}`);
       AccessToken.getCurrentAccessToken().then(
         (data) => {
           const token = data.accessToken.toString();
@@ -111,11 +111,11 @@ export default class FBLoginButton extends Component {
 
 // Add listener to see if the user is signed in to Firebase
   _isLoggedin = () => {
-    console.log('isSignedIn in _isLoggedin');
-    console.log(this.props.isSignedIn);
+    // console.log('isSignedIn in _isLoggedin');
+    // console.log(this.props.isSignedIn);
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        console.log('signed in user:');
+        // console.log('signed in user:');
         const userID = user.uid;
         const databaseRef = firebase.database().ref(`users/${user.uid}`);
         // console.log('databaseRef:');
@@ -128,10 +128,10 @@ export default class FBLoginButton extends Component {
             const email = snapshot.child('email').val();
             const currentUser = new User(name, email, userID);
             this.props.updateSignIn(true);
-            console.log('isSignedIn after logged in');
-            console.log(this.props.isSignedIn);
+            // console.log('isSignedIn after logged in');
+            // console.log(this.props.isSignedIn);
             Actions.HomePage();
-            console.log(currentUser);
+            // console.log(currentUser);
           })
           .catch((error) => {
             console.log('error checking for child:');

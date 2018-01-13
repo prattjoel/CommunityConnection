@@ -14,7 +14,7 @@ const dataSource = [
 
 export default class MessageList extends Component {
   renderItem = (item) => {
-    console.log(item);
+    // console.log(item);
     return (
       <Text>
         {item.item.val}

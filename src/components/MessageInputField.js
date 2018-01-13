@@ -9,6 +9,16 @@ export default class MessageInputField extends Component {
     this.props.updateMessageText(text);
   }
 
+  onSendButtonPressed() {
+    const { message } = this.props;
+
+    if (message !== '') {
+      this.props.sendMessageText(message);
+    } else {
+      console.log('No message included');
+    }
+  }
+
   render() {
     return (
       <View style={styles.containerStyle}>
@@ -18,7 +28,9 @@ export default class MessageInputField extends Component {
           onChangeText={this.onMessageChange.bind(this)}
           value={this.props.message}
         />
-        <SendButton />
+        <SendButton
+          onPress={this.onSendButtonPressed.bind(this)}
+        />
       </View>
     );
   }

@@ -1,11 +1,10 @@
 'use-strict';
 
 import { connect } from 'react-redux';
-import { messageChanged } from '../actions/MessageActions';
+import { messageChanged, sendMessage } from '../actions/MessageActions';
 import MessageInputField from './MessageInputField';
 
 const mapStateToProps = state => {
-  // debugger;
   return (
     { message: state.message.messageText }
   );
@@ -13,9 +12,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return (
-    { updateMessageText: text => {
+    {
+      updateMessageText: text => {
       dispatch(messageChanged(text));
-    }
+    },
+      sendMessageText: message => {
+        dispatch(sendMessage(message));
+      }
   });
 };
 

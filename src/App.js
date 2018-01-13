@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
 import reducers from './reducers';
-// import FBLoginButton from './components/FBLoginButton';
 import Router from './Router';
 
 console.ignoredYellowBox = ['Remote debugger'];
@@ -23,8 +23,9 @@ export default class App extends Component {
   }
 
   render() {
+    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={store}>
          <View style={{ flex: 1 }}>
             <Router />
          </View>

@@ -1,12 +1,17 @@
 'use-strict';
 
 import { connect } from 'react-redux';
-import { messageChanged, sendMessage } from '../actions/MessageActions';
+import {
+  messageChanged,
+  sendMessage,
+  getMessages
+} from '../actions/MessageActions';
 import MessageInputField from './MessageInputField';
 
 const mapStateToProps = state => {
   return (
-    { message: state.message.messageText }
+    { message: state.messages.messageText },
+    { messages: state.messages.messagesToShow }
   );
 };
 
@@ -18,6 +23,9 @@ const mapDispatchToProps = dispatch => {
     },
       sendMessageText: message => {
         dispatch(sendMessage(message));
+      },
+      getMessages: () => {
+        dispatch(getMessages());
       }
   });
 };

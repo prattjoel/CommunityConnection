@@ -4,5 +4,5 @@ import MessageReducer from './MessageReducer';
 
 export default combineReducers({
     signIn,
-    message: MessageReducer
+    messages: MessageReducer
 });

@@ -1,6 +1,10 @@
 'use strict';
 import firebase from 'firebase';
-import { MESSAGE_TEXT_CHANGED, MESSAGE_SENT } from './types';
+import {
+  MESSAGE_TEXT_CHANGED,
+  MESSAGE_SENT,
+  GET_MESSAGE_SUCCESS
+} from './types';
 
 export const messageChanged = text => {
   return ({
@@ -19,6 +23,20 @@ export const sendMessage = (message) => {
         console.log('message sent');
         dispatch({
           type: MESSAGE_SENT
+        });
+      });
+  };
+};
+
+export const getMessages = () => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/messages`)
+      .on('value', snapshot => {
+        dispatch({
+          type: GET_MESSAGE_SUCCESS,
+          payload: snapshot.val()
         });
       });
   };

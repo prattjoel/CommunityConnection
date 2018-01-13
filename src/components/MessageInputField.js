@@ -5,6 +5,15 @@ import { View, TextInput } from 'react-native';
 import SendButton from './SendButton';
 
 export default class MessageInputField extends Component {
+  componentWillMount() {
+    this.props.getMessages();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('messages after loading');
+    console.log(nextProps.messages);
+  }
+
   onMessageChange(text) {
     this.props.updateMessageText(text);
   }

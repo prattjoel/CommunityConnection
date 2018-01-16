@@ -1,42 +1,33 @@
 'use-strict';
 
 import React, { Component } from 'react';
-import { SectionList, Text } from 'react-native';
-
-const dataSource = [
-  { data:
-    [{ val: 'Hello Handsome', key: '1' }, { val: 'Your a good looking guy', key: '2' }],
-    key: 'Young Frank' },
-  { data:
-    [{ val: 'You waste our film', key: '1' }, { val: 'Call me back 7 o clock', key: '2' }],
-    key: 'Rush hr' },
-];
+import { FlatList, Text } from 'react-native';
 
 export default class MessageList extends Component {
-  renderItem = (item) => {
-    // console.log(item);
-    return (
-      <Text>
-        {item.item.val}
-      </Text>
-    );
+
+  componentWillMount() {
+    // Get messages form firebase database
+    this.props.getMessages();
+  }
+
+  // Assigns the message content as the key for each list item
+    // TODO: Assign each message a unique key
+  keyExtractor = (item) => item.message;
+
+  renderItem = () => {
+    // TODO: create custom list item and render user's info along with message content
   };
 
-  renderHeader = (item) => {
-    return (
-      <Text style={{ fontSize: 24 }}>
-        {item.section.key}
-      </Text>
-    );
+  renderHeader = () => {
+    // TODO: create custom headers for message sections - Date
   };
 
   render() {
     return (
-      <SectionList
-        sections={dataSource}
-        renderItem={this.renderItem}
-        renderSectionHeader={this.renderHeader}
-        // keyExtractor={(item) => item.val}
+      <FlatList
+        data={this.props.messagesToDisplay}
+        renderItem={({ item }) => <Text>{item.message}</Text>}
+        keyExtractor={this.keyExtractor}
       />
     );
   }

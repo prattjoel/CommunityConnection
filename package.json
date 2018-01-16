@@ -9,6 +9,7 @@
   "dependencies": {
     "adm-zip": "^0.4.7",
     "firebase": "^4.8.0",
+    "lodash": "^4.17.4",
     "plist": "^2.1.0",
     "react": "16.0.0",
     "react-native": "0.51.0",

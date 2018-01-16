@@ -3,15 +3,13 @@
 import { connect } from 'react-redux';
 import {
   messageChanged,
-  sendMessage,
-  getMessages
+  sendMessage
 } from '../actions/MessageActions';
 import MessageInputField from './MessageInputField';
 
 const mapStateToProps = state => {
   return (
-    { message: state.messages.messageText },
-    { messages: state.messages.messagesToShow }
+    { message: state.messages.messageText }
   );
 };
 
@@ -23,9 +21,6 @@ const mapDispatchToProps = dispatch => {
     },
       sendMessageText: message => {
         dispatch(sendMessage(message));
-      },
-      getMessages: () => {
-        dispatch(getMessages());
       }
   });
 };

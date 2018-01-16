@@ -38,6 +38,7 @@ export default class FBLoginButton extends Component {
       });
   };
 
+  // Logout user from Firebase
   _firebaseLogout = () => {
     firebase.auth().signOut().then(
       () => {
@@ -134,7 +135,7 @@ export default class FBLoginButton extends Component {
             // console.log(currentUser);
           })
           .catch((error) => {
-            console.log('error checking for child:');
+            console.log('error checking for user signed in status:');
             console.log(error);
           });
       } else {

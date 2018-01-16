@@ -15,10 +15,11 @@ export const messageChanged = text => {
 
 export const sendMessage = (message) => {
   const { currentUser } = firebase.auth();
+  const messageInfo = { user: currentUser.uid, message }
 
   return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/messages`)
-      .push({ message })
+    firebase.database().ref('/messages')
+      .push(messageInfo)
       .then(() => {
         console.log('message sent');
         dispatch({
@@ -32,7 +33,7 @@ export const getMessages = () => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/messages`)
+    firebase.database().ref('/messages')
       .on('value', snapshot => {
         dispatch({
           type: GET_MESSAGE_SUCCESS,

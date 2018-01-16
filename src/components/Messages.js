@@ -7,8 +7,12 @@ import MessageList from './MessageList';
 
 // Send array of messages as prop to be displayed in MessageList Component
 const mapStateToProps = state => {
+  const { messagesToShow } = state.messages;
   return (
-    { messagesToDisplay: _.values(state.messages.messagesToShow) }
+    {
+      messagesToDisplay: _.values(messagesToShow),
+      messageKeys: Object.keys(messagesToShow)
+    }
   );
 };
 

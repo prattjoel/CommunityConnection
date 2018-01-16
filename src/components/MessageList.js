@@ -6,20 +6,21 @@ import { FlatList, Text } from 'react-native';
 export default class MessageList extends Component {
 
   componentWillMount() {
-    // Get messages form firebase database
+    // Get messages form firebase
     this.props.getMessages();
   }
 
-  // Assigns the message content as the key for each list item
-    // TODO: Assign each message a unique key
-  keyExtractor = (item) => item.message;
+  // Assign unique key from firebase to each message
+  keyExtractor = (item, index) => {
+    return this.props.messageKeys[index];
+  }
 
   renderItem = () => {
     // TODO: create custom list item and render user's info along with message content
   };
 
   renderHeader = () => {
-    // TODO: create custom headers for message sections - Date
+    // TODO: create custom headers for message sections - Date time etc.
   };
 
   render() {

@@ -1,7 +1,8 @@
 'use-strict';
 
 import React, { Component } from 'react';
-import { FlatList, Text } from 'react-native';
+import { FlatList } from 'react-native';
+import MessageText from './MessageText';
 
 export default class MessageList extends Component {
 
@@ -27,7 +28,7 @@ export default class MessageList extends Component {
     return (
       <FlatList
         data={this.props.messagesToDisplay}
-        renderItem={({ item }) => <Text>{item.message}</Text>}
+        renderItem={({ item }) => <MessageText>{item.message}</MessageText>}
         keyExtractor={this.keyExtractor}
       />
     );

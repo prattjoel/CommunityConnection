@@ -15,7 +15,10 @@ export const messageChanged = text => {
 
 export const sendMessage = (message) => {
   const { currentUser } = firebase.auth();
-  const messageInfo = { user: currentUser.uid, message }
+  const timeOptions = { hour: 'numeric', minute: 'numeric' };
+  const date = new Date();
+  const timestamp = date.toLocaleTimeString('en-us', timeOptions);
+  const messageInfo = { user: currentUser.uid, message, timestamp };
 
   return (dispatch) => {
     firebase.database().ref('/messages')

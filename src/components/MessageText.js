@@ -15,9 +15,14 @@ const MessageText = (props) => {
           style={{ width: 20, height: 20 }}
         />
         <View>
-          <Text style={styles.timestampStyle}>
-            {props.timestamp}
-          </Text>
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={styles.nameStyle}>
+              {props.name}
+            </Text>
+            <Text style={styles.timestampStyle}>
+              {props.timestamp}
+            </Text>
+          </View>
           <Text
             style={styles.textStyle}
           >
@@ -44,6 +49,11 @@ const styles = {
   timestampStyle: {
     paddingLeft: 10,
     fontSize: 10
+  },
+  nameStyle: {
+    paddingLeft: 10,
+    fontSize: 16,
+    fontWeight: 'bold'
   }
 };
 

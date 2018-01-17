@@ -16,8 +16,16 @@ export default class MessageList extends Component {
     return this.props.messageKeys[index];
   }
 
-  renderItem = () => {
+  renderItem = ({ item }) => {
     // TODO: create custom list item and render user's info along with message content
+    return (
+      <MessageText
+        timestamp={item.timestamp}
+        name={item.name}
+      >
+        {item.message}
+      </MessageText>
+    );
   };
 
   renderHeader = () => {
@@ -29,7 +37,7 @@ export default class MessageList extends Component {
       <View style={{ flex: 10, backgroundColor: 'white' }}>
         <FlatList
           data={this.props.messagesToDisplay}
-          renderItem={({ item }) => <MessageText timestamp={item.timestamp}>{item.message}</MessageText>}
+          renderItem={this.renderItem}
           keyExtractor={this.keyExtractor}
         />
       </View>

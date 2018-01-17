@@ -18,7 +18,7 @@ const RouterComponent = () => {
         <Scene
           key='HomePage'
           component={Home}
-          title='Home Page'
+          title='Chat'
         />
       </Stack>
     </Router>

@@ -3,12 +3,17 @@
 import React from 'react';
 import {
   View,
-  Text
+  Text,
+  Image
 } from 'react-native';
 
 const MessageText = (props) => {
     return (
-      <View>
+      <View style={styles.containerStyle}>
+        <Image
+          source={require('../assets/profilePlaceholder.png')}
+          style={{ width: 20, height: 20 }}
+        />
         <Text
           style={styles.textStyle}
         >
@@ -19,9 +24,13 @@ const MessageText = (props) => {
 };
 
 const styles = {
-  textStyle: {
+  containerStyle: {
+    flexDirection: 'row',
     paddingLeft: 10,
     paddingTop: 10,
+  },
+  textStyle: {
+    paddingLeft: 10,
     fontSize: 16
   }
 };

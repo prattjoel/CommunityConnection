@@ -36,9 +36,10 @@ export default class MessageList extends Component {
     return (
       <View style={{ flex: 10, backgroundColor: 'white' }}>
         <FlatList
-          data={this.props.messagesToDisplay}
+          data={this.props.messagesToDisplay.reverse()}
           renderItem={this.renderItem}
           keyExtractor={this.keyExtractor}
+          inverted
         />
       </View>
 

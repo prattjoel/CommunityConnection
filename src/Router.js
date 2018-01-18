@@ -27,7 +27,8 @@ const RouterComponent = () => {
           drawerImage={MenuImage}
           contentComponent={ChatRoomList}
           drawerWidth={300}
-          drawerPosition='right'
+          drawerPosition='left'
+          title='Choose a Chatroom'
         >
           <Scene
             key='HomePage'

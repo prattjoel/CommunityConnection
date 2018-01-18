@@ -1,8 +1,18 @@
 'use-strict';
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text, FlatList } from 'react-native';
 
-const ChatRoomList = () => <View style={{ flex: 1 }}><Text>Chat Room List</Text></View>;
+const data = ['Prayer', 'General', 'Conversation Circle'];
+
+const ChatRoomList = () => {
+  return (
+    <FlatList
+      data={data}
+      renderItem={(item) => <Text> {item.item} </Text>}
+    />
+  );
+};
+
 
 export default ChatRoomList;

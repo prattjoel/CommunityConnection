@@ -38,13 +38,14 @@ const styles = {
     flexDirection: 'row',
     paddingLeft: 10,
     paddingTop: 10,
+    paddingRight: 25,
     borderTopWidth: 0.5,
     borderBottomWidth: 0.5,
     borderColor: '#d3d3d3'
   },
   textStyle: {
     paddingLeft: 10,
-    fontSize: 16
+    fontSize: 14
   },
   timestampStyle: {
     paddingLeft: 10,
@@ -52,7 +53,7 @@ const styles = {
   },
   nameStyle: {
     paddingLeft: 10,
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold'
   }
 };

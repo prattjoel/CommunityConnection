@@ -6,6 +6,7 @@ import {
   GET_MESSAGE_SUCCESS
 } from './types';
 
+// Set text for message input
 export const messageChanged = text => {
   return ({
     type: MESSAGE_TEXT_CHANGED,
@@ -13,6 +14,7 @@ export const messageChanged = text => {
   });
 };
 
+// Send massages to database
 export const sendMessage = (message, currentChatRoom) => {
   const { currentUser } = firebase.auth();
   const timeOptions = { hour: 'numeric', minute: 'numeric' };
@@ -37,11 +39,12 @@ export const sendMessage = (message, currentChatRoom) => {
   };
 };
 
-export const getMessages = () => {
-  const { currentUser } = firebase.auth();
+// Retrieve messages from database based on the current chat room.
+export const getMessages = (currentChatRoom) => {
+  // const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    firebase.database().ref('/messages')
+    firebase.database().ref(`/chat_rooms/${currentChatRoom}`)
       .on('value', snapshot => {
         dispatch({
           type: GET_MESSAGE_SUCCESS,

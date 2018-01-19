@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { getMessages } from '../actions/MessageActions';
 import MessageList from './MessageList';
 
-// Send array of messages as prop to be displayed in MessageList Component
+// Send message information as props to MessageList Component
 const mapStateToProps = state => {
   const { messagesToShow } = state.messages;
   return (
@@ -17,12 +17,12 @@ const mapStateToProps = state => {
   );
 };
 
-// Send getMessages as prop for retrieving messages from database to MessageList Component
+// Send actions as props to MessageList Component
 const mapDispatchToProps = dispatch => {
   return (
     {
-      getMessages: () => {
-        dispatch(getMessages());
+      getMessages: (currentChatRoom) => {
+        dispatch(getMessages(currentChatRoom));
       }
   });
 };

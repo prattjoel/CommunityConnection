@@ -7,10 +7,12 @@ import MessageText from './MessageText';
 export default class MessageList extends Component {
 
   componentWillMount() {
-    // Get messages form firebase
-    this.props.getMessages();
+    // Get messages from chat room in firebase
+    const { getMessages, currentChatRoom } = this.props;
+
+    getMessages(currentChatRoom);
     console.log('chat room in message list');
-    console.log(this.props.currentChatRoom);
+    console.log(currentChatRoom);
   }
 
   // Assign unique key from firebase to each message

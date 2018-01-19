@@ -3,6 +3,7 @@
 import { connect } from 'react-redux';
 import { setChatRoom } from '../actions/ChatRoomActions';
 import ChatRoomList from '../components/ChatRoomList';
+// import MessageList from '../components/MessageList';
 
 //
 const mapStateToProps = state => {

@@ -11,7 +11,8 @@ const mapStateToProps = state => {
   return (
     {
       messagesToDisplay: _.values(messagesToShow),
-      messageKeys: Object.keys(messagesToShow)
+      messageKeys: Object.keys(messagesToShow),
+      currentChatRoom: state.chatRooms.currentChatRoom
     }
   );
 };

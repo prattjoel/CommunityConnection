@@ -1,18 +1,22 @@
 'use-strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 import { Text, FlatList } from 'react-native';
 
 const data = ['Prayer', 'General', 'Conversation Circle'];
 
-const ChatRoomList = () => {
-  return (
-    <FlatList
-      data={data}
-      renderItem={(item) => <Text> {item.item} </Text>}
-    />
-  );
-};
+export default class ChatRoomList extends Component {
+  componentWillMount() {
+      console.log('Chatroom: ');
+      console.log(this.props.currentChatRoom);
+  }
 
-
-export default ChatRoomList;
+  render() {
+      return (
+        <FlatList
+          data={data}
+          renderItem={(item) => <Text> {item.item} </Text>}
+        />
+      );
+    }
+}

@@ -10,7 +10,7 @@ import {
 // import FBLoginButton from './components/FBLoginButton';
 import Login from './components/Login';
 import Home from './components/Home';
-import ChatRoomList from './components/ChatRoomList';
+import ChatRooms from './containers/ChatRooms';
 import MenuImage from './assets/menu_burger.png';
 
 const RouterComponent = () => {
@@ -25,7 +25,7 @@ const RouterComponent = () => {
         <Drawer
           key='drawer'
           drawerImage={MenuImage}
-          contentComponent={ChatRoomList}
+          contentComponent={ChatRooms}
           drawerWidth={300}
           drawerPosition='left'
           title='Choose a Chatroom'

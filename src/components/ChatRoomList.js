@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { Text, FlatList } from 'react-native';
+import ChatRoomListItem from './ChatRoomListItem';
 
 const data = ['Prayer', 'General', 'Conversation Circle'];
 
@@ -15,7 +16,7 @@ export default class ChatRoomList extends Component {
       return (
         <FlatList
           data={data}
-          renderItem={(item) => <Text> {item.item} </Text>}
+          renderItem={(item) => <ChatRoomListItem> {item.item} </ChatRoomListItem>}
         />
       );
     }

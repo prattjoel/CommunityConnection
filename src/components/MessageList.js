@@ -9,7 +9,6 @@ export default class MessageList extends Component {
   componentWillMount() {
     // Get messages form firebase
     this.props.getMessages();
-    debugger;
     console.log('chat room in message list');
     console.log(this.props.currentChatRoom);
   }

@@ -13,7 +13,7 @@ export const messageChanged = text => {
   });
 };
 
-export const sendMessage = (message) => {
+export const sendMessage = (message, currentChatRoom) => {
   const { currentUser } = firebase.auth();
   const timeOptions = { hour: 'numeric', minute: 'numeric' };
   const date = new Date();
@@ -26,7 +26,7 @@ export const sendMessage = (message) => {
  };
 
   return (dispatch) => {
-    firebase.database().ref('/messages')
+    firebase.database().ref(`/chat_rooms/${currentChatRoom}`)
       .push(messageInfo)
       .then(() => {
         console.log('message sent');

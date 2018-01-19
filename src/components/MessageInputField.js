@@ -5,16 +5,20 @@ import { View, TextInput } from 'react-native';
 import SendButton from './SendButton';
 
 export default class MessageInputField extends Component {
+  componentWillMount() {
+    console.log('chat room in message input field');
+    console.log(this.props.currentChatRoom);
+  }
 
   onMessageChange(text) {
     this.props.updateMessageText(text);
   }
 
   onSendButtonPressed() {
-    const { message } = this.props;
+    const { message, currentChatRoom } = this.props;
 
     if (message !== '') {
-      this.props.sendMessageText(message);
+      this.props.sendMessageText(message, currentChatRoom);
     } else {
       console.log('No message included');
     }

@@ -9,7 +9,10 @@ import MessageInputField from './MessageInputField';
 
 const mapStateToProps = state => {
   return (
-    { message: state.messages.messageText }
+    {
+      message: state.messages.messageText,
+      currentChatRoom: state.chatRooms.currentChatRoom
+    }
   );
 };
 
@@ -19,8 +22,8 @@ const mapDispatchToProps = dispatch => {
       updateMessageText: text => {
       dispatch(messageChanged(text));
     },
-      sendMessageText: message => {
-        dispatch(sendMessage(message));
+      sendMessageText: (message, currentChatRoom) => {
+        dispatch(sendMessage(message, currentChatRoom));
       }
   });
 };

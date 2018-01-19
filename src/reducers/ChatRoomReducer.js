@@ -12,6 +12,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_CHAT_ROOM:
+    // debugger;
       return { ...state, currentChatRoom: action.payload };
     default:
       return (state);

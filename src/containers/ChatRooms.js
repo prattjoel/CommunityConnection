@@ -2,6 +2,7 @@
 
 import { connect } from 'react-redux';
 import { setChatRoom } from '../actions/ChatRoomActions';
+import { getMessages } from '../actions/MessageActions';
 import ChatRoomList from '../components/ChatRoomList';
 // import MessageList from '../components/MessageList';
 
@@ -21,9 +22,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return (
     {
-      setChatRoom: () => {
-        dispatch(setChatRoom);
-      }
+      setChatRoom: (currentChatRoom) => {
+        dispatch(setChatRoom(currentChatRoom));
+      },
+    getMessages: (currentChatRoom) => {
+      dispatch(getMessages(currentChatRoom));
+    }
   });
 };
 

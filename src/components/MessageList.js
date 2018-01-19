@@ -11,9 +11,18 @@ export default class MessageList extends Component {
     const { getMessages, currentChatRoom } = this.props;
 
     getMessages(currentChatRoom);
+
     console.log('chat room in message list');
     console.log(currentChatRoom);
   }
+  // 
+  // componentWillUpdate(nextProps) {
+  //   const { getMessages, currentChatRoom } = nextProps;
+  //
+  //   getMessages(currentChatRoom);
+  //   console.log('chat room in componentWillReceiveProps');
+  //   console.log(currentChatRoom);
+  // }
 
   // Assign unique key from firebase to each message
   keyExtractor = (item, index) => {

@@ -43,13 +43,33 @@ export const sendMessage = (message, currentChatRoom) => {
 export const getMessages = (currentChatRoom) => {
   // const { currentUser } = firebase.auth();
 
+  // Supply default in case chat room is empty
+  const defaultMessage = {
+    key: {
+      message: 'default message',
+      name: 'name',
+      timestamp: '00:00',
+      user: 'default user'
+    }
+  };
+
   return (dispatch) => {
     firebase.database().ref(`/chat_rooms/${currentChatRoom}`)
       .on('value', snapshot => {
-        dispatch({
-          type: GET_MESSAGE_SUCCESS,
-          payload: snapshot.val()
-        });
+        const snap = snapshot.val();
+        if (snap) {
+          callDispatch(dispatch, snap);
+        } else {
+          // debugger;
+          callDispatch(dispatch, defaultMessage);
+        }
       });
   };
+};
+
+const callDispatch = (dispatch, messageValue) => {
+  dispatch({
+    type: GET_MESSAGE_SUCCESS,
+    payload: messageValue
+  });
 };

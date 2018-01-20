@@ -8,8 +8,8 @@ import {
 
 export default class ChatRoomListItem extends Component {
   onPressItem = () => {
-    this.props.onPress(this.props.item);
-    this.props.updateMessages(this.props.item);
+    this.props.onPress(this.props.roomKey);
+    this.props.updateMessages(this.props.roomKey);
   }
   render() {
     return (

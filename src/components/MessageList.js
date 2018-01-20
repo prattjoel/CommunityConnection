@@ -15,7 +15,7 @@ export default class MessageList extends Component {
     console.log('chat room in message list');
     console.log(currentChatRoom);
   }
-  // 
+  //
   // componentWillUpdate(nextProps) {
   //   const { getMessages, currentChatRoom } = nextProps;
   //
@@ -31,6 +31,7 @@ export default class MessageList extends Component {
 
   renderItem = ({ item }) => {
     // TODO: create custom list item and render user's info along with message content
+    // debugger;
     return (
       <MessageText
         timestamp={item.timestamp}
@@ -46,6 +47,7 @@ export default class MessageList extends Component {
   };
 
   render() {
+    // debugger;
     return (
       <View style={{ flex: 10, backgroundColor: 'white' }}>
         <FlatList

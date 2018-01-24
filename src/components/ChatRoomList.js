@@ -22,6 +22,11 @@ export default class ChatRoomList extends Component {
       // debugger;
   }
 
+  // componentDidMount() {
+  //   debugger;
+  //   Actions.refresh({ ref: this.refs.drawer });
+  // }
+
   updateChatRoom = (room) => {
     this.props.setChatRoom(room);
   }

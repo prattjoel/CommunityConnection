@@ -10,7 +10,6 @@ import {
   LoginButton,
   AccessToken
 } from 'react-native-fbsdk';
-import { Actions } from 'react-native-router-flux';
 import User from '../User';
 
 export default class FBLoginButton extends Component {
@@ -131,7 +130,7 @@ export default class FBLoginButton extends Component {
             this.props.updateSignIn(true);
             // console.log('isSignedIn after logged in');
             // console.log(this.props.isSignedIn);
-            Actions.HomePage();
+            this.props.navigation.navigate('Home');
             // console.log(currentUser);
           })
           .catch((error) => {

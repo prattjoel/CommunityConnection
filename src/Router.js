@@ -6,21 +6,39 @@ import Login from './components/Login';
 import Home from './components/Home';
 import ChatRooms from './containers/ChatRooms';
 // import MenuImage from './assets/menu_burger.png';
-import ChatMenuButton from './components/ChatMenuButton';
+// import ChatMenuButton from './components/ChatMenuButton';
+// import Messages from './components/Messages';
 
-const MessageNav = StackNavigator(
+const MessagesNav = StackNavigator(
+  {
+    ChatroomChooser: {
+      screen: ChatRooms,
+      navigationOptions: {
+        headerTitle: 'Messages'
+      },
+    },
+    Messages: {
+      screen: Home,
+      navigationOptions: {
+        headerTitle: 'Current Messages'
+      },
+    }
+  },
+  {
+    headerMode: 'none'
+  }
+);
+
+const HomeNav = TabNavigator(
 
 {
-   MessageHome: {
-      screen: Home,
+   MessageNav: {
+      screen: MessagesNav,
       navigationOptions: {
         headerTitle: 'Messages'
       },
     },
   },
-  {
-    headerMode: 'none'
-  }
 );
 
 const MainNav = StackNavigator(
@@ -32,11 +50,7 @@ const MainNav = StackNavigator(
       }
     },
     Home: {
-      screen: MessageNav,
-      headerMode: 'none'
-      // navigationOptions: {
-      //   headerMode: 'none'
-      // }
+      screen: HomeNav,
     }
   }
 );

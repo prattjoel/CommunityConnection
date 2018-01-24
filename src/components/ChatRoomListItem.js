@@ -10,7 +10,10 @@ import {
 export default class ChatRoomListItem extends Component {
   onPressItem = () => {
     this.props.onPress(this.props.roomKey);
-    this.props.updateMessages(this.props.roomKey);
+    this.props.getMessages(this.props.roomKey);
+
+    // Navigate to Messages screen
+    this.props.navigation.navigate('Messages');
   }
   render() {
     return (

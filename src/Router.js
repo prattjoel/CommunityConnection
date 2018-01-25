@@ -9,10 +9,22 @@ import ChatRooms from './containers/ChatRooms';
 // import ChatMenuButton from './components/ChatMenuButton';
 // import Messages from './components/Messages';
 
-const MessagesNav = StackNavigator(
+const MessagesNav = TabNavigator(
   {
     ChatroomChooser: {
       screen: ChatRooms,
+      navigationOptions: {
+        headerTitle: 'Messages'
+      },
+    },
+  },
+);
+
+const HomeNav = StackNavigator(
+
+{
+   MessageNav: {
+      screen: MessagesNav,
       navigationOptions: {
         headerTitle: 'Messages'
       },
@@ -27,18 +39,6 @@ const MessagesNav = StackNavigator(
   {
     headerMode: 'none'
   }
-);
-
-const HomeNav = TabNavigator(
-
-{
-   MessageNav: {
-      screen: MessagesNav,
-      navigationOptions: {
-        headerTitle: 'Messages'
-      },
-    },
-  },
 );
 
 const MainNav = StackNavigator(

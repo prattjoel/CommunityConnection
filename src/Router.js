@@ -5,6 +5,10 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import Login from './components/Login';
 import Home from './components/Home';
 import ChatRooms from './containers/ChatRooms';
+import GivingPage from './components/Giving';
+import ContactForm from './components/ContactForm';
+import Announcements from './components/Announcements';
+
 // import MenuImage from './assets/menu_burger.png';
 // import ChatMenuButton from './components/ChatMenuButton';
 // import Messages from './components/Messages';
@@ -17,6 +21,15 @@ const MessagesNav = TabNavigator(
         headerTitle: 'Messages'
       },
     },
+    GivingPage: {
+      screen: GivingPage
+    },
+    ContactForm: {
+      screen: ContactForm
+    },
+    Announcements: {
+      screen: Announcements
+    }
   },
 );
 

@@ -54,9 +54,26 @@ const MessagesNav = StackNavigator(
     },
   },
   {
-    headerMode: 'none'
-  }
-);
+    // initialRouteName: 'MessageHome',
+    headerMode: 'float',
+    navigationOptions: ({ navigation }) => ({
+      // headerStyle: { backgroundColor: '#4C3E54' },
+      title: 'Home',
+      // headerTintColor: 'white',
+      headerRight:
+        <Text
+          onPress={() => {
+            navigation.navigate('DrawerToggle');
+          }
+          }
+        >
+          Menu
+        </Text>
+    })
+  // {
+  //   headerMode: 'none'
+  // }
+});
 
 const MenuDrawer = DrawerNavigator({
   MessageHome: {
@@ -77,23 +94,26 @@ const DrawerNav = StackNavigator(
     },
 },
 {
-  // initialRouteName: 'MessageHome',
-  headerMode: 'float',
-  navigationOptions: ({ navigation }) => ({
-    // headerStyle: { backgroundColor: '#4C3E54' },
-    title: 'Home',
-    // headerTintColor: 'white',
-    headerLeft:
-      <Text
-        onPress={() => {
-          navigation.navigate('DrawerToggle');
-        }
-        }
-      >
-        Menu
-      </Text>
-  })
+  headerMode: 'none'
 }
+// {
+//   // initialRouteName: 'MessageHome',
+//   headerMode: 'float',
+//   navigationOptions: ({ navigation }) => ({
+//     // headerStyle: { backgroundColor: '#4C3E54' },
+//     title: 'Home',
+//     // headerTintColor: 'white',
+//     headerLeft:
+//       <Text
+//         onPress={() => {
+//           navigation.navigate('DrawerToggle');
+//         }
+//         }
+//       >
+//         Menu
+//       </Text>
+//   })
+// }
 );
 
 const MainNav = StackNavigator(

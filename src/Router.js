@@ -71,7 +71,8 @@ const MessagesNav = StackNavigator(
   // {
   //   headerMode: 'none'
   // }
-});
+},
+);
 
 const MenuDrawer = DrawerNavigator(
   {
@@ -129,8 +130,11 @@ const MainNav = StackNavigator(
     },
   },
   {
-    headerMode: 'none'
-  }
+    headerMode: 'none',
+    navigationOptions: {
+      gesturesEnabled: false
+    }
+  },
 );
 
 export default MainNav;

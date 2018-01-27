@@ -15,8 +15,6 @@ import SettingsMenu from './components/Settings';
 // import ChatMenuButton from './components/ChatMenuButton';
 // import Messages from './components/Messages';
 
-
-
 const HomeNav = TabNavigator(
   {
     ChatroomChooser: {
@@ -48,9 +46,9 @@ const MessagesNav = StackNavigator(
     },
     Messages: {
       screen: Home,
-      // navigationOptions: {
-      //   headerTitle: 'Current Messages'
-      // },
+      navigationOptions: {
+        headerTitle: 'Current Messages'
+      },
     },
   },
   {
@@ -75,17 +73,22 @@ const MessagesNav = StackNavigator(
   // }
 });
 
-const MenuDrawer = DrawerNavigator({
-  MessageHome: {
-    screen: MessagesNav
+const MenuDrawer = DrawerNavigator(
+  {
+    MessageHome: {
+      screen: MessagesNav
+    },
+    SettingsMenu: {
+      screen: SettingsMenu
+    },
+    Settings2: {
+      screen: SettingsMenu
+    },
   },
-  SettingsMenu: {
-    screen: SettingsMenu
-  },
-  Settings2: {
-    screen: SettingsMenu
-  },
-});
+  {
+    drawerPosition: 'right'
+  }
+);
 
 const DrawerNav = StackNavigator(
   {

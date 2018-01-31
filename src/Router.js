@@ -55,7 +55,7 @@ const MessagesNav = StackNavigator(
     // initialRouteName: 'MessageHome',
     headerMode: 'float',
     navigationOptions: ({ navigation }) => ({
-      title: 'Home',
+      title: 'Home Page',
       headerRight:
         <Text
           onPress={() => {
@@ -72,6 +72,24 @@ const MessagesNav = StackNavigator(
 },
 );
 
+const LoginStack = StackNavigator({
+  Login: {
+    screen: Login,
+    navigationOptions: ({ navigation }) => ({
+      title: 'FB Login',
+      headerRight:
+        <Text
+          onPress={() => {
+            navigation.navigate('Home');
+          }
+          }
+        >
+          Home
+        </Text>
+    })
+  },
+});
+
 const MenuDrawer = DrawerNavigator(
   {
     MessageHome: {
@@ -81,7 +99,7 @@ const MenuDrawer = DrawerNavigator(
       screen: SettingsMenu
     },
     Logout: {
-      screen: Login
+      screen: LoginStack
     },
   },
   {
@@ -121,7 +139,7 @@ const DrawerNav = StackNavigator(
 const MainNav = StackNavigator(
   {
     Login: {
-      screen: Login,
+      screen: LoginStack,
     },
     Home: {
       screen: DrawerNav,

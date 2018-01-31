@@ -113,6 +113,7 @@ export default class FBLoginButton extends Component {
   _isLoggedin = () => {
     // console.log('isSignedIn in _isLoggedin');
     // console.log(this.props.isSignedIn);
+    if (!this.props.isSignedIn) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         // console.log('signed in user:');
@@ -141,6 +142,7 @@ export default class FBLoginButton extends Component {
         console.log('user not signed in');
       }
     });
+  }
   };
 
   render() {

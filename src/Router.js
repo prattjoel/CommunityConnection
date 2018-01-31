@@ -55,9 +55,7 @@ const MessagesNav = StackNavigator(
     // initialRouteName: 'MessageHome',
     headerMode: 'float',
     navigationOptions: ({ navigation }) => ({
-      // headerStyle: { backgroundColor: '#4C3E54' },
       title: 'Home',
-      // headerTintColor: 'white',
       headerRight:
         <Text
           onPress={() => {
@@ -82,8 +80,8 @@ const MenuDrawer = DrawerNavigator(
     SettingsMenu: {
       screen: SettingsMenu
     },
-    Settings2: {
-      screen: SettingsMenu
+    Logout: {
+      screen: Login
     },
   },
   {

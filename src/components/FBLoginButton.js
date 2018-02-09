@@ -4,18 +4,45 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import {
   View,
-  StyleSheet
+  StyleSheet,
+  Text
 } from 'react-native';
 import {
   LoginButton,
   AccessToken
 } from 'react-native-fbsdk';
+import { NavigationActions } from 'react-navigation';
 import User from '../User';
 
 export default class FBLoginButton extends Component {
+  // static navigationOptions = ({ navigation }) => ({
+  //   title: navigation.state.params.title
+  // });
+
+  static navigationOptions = ({ navigation }) => {
+    // debugger;
+    const titleText = 'FB Login';
+    return ({
+      // title: 'FB Login' || `${navigation.state.params.title}`,
+      // title: titleText,
+      headerRight:
+        <Text
+          onPress={() => {
+            navigation.navigate('Home');
+          }
+          }
+        >
+          Home
+        </Text>
+    });
+}
+
   componentWillMount() {
+    // this.props.navigation.setParams({ title: 'FB' });
+
     this._isLoggedin();
   }
+
 // Login user to firebase using acces token from Facebook login
   _firebaseLogin = (token) => {
     const credential = firebase.auth.FacebookAuthProvider.credential(token);
@@ -39,6 +66,16 @@ export default class FBLoginButton extends Component {
 
   // Logout user from Firebase
   _firebaseLogout = () => {
+    // debugger;
+    // const disableHeaderButton = NavigationActions.setParams({
+    //   params: { headerRight: null },
+    //   key: 'Login'
+    // });
+    // this.props.navigation.dispatch(disableHeaderButton);
+    // this.props.navigation.setParams({ title: 'FB' });
+    this.props.navigation.setParams({ title: 'Test' });
+    console.log(this.props.navigation);
+
     firebase.auth().signOut().then(
       () => {
         console.log('user Signed Out of firebase');
@@ -131,6 +168,7 @@ export default class FBLoginButton extends Component {
             this.props.updateSignIn(true);
             // console.log('isSignedIn after logged in');
             // console.log(this.props.isSignedIn);
+            // debugger;
             this.props.navigation.navigate('Home');
             // console.log(currentUser);
           })

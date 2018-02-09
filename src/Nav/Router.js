@@ -72,23 +72,32 @@ const MessagesNav = StackNavigator(
 },
 );
 
-const LoginStack = StackNavigator({
+const LoginStack = StackNavigator(
+  {
+  // TODO: only allow navigation to home page if authenticated
   Login: {
     screen: Login,
-    navigationOptions: ({ navigation }) => ({
-      title: 'FB Login',
-      headerRight:
-        <Text
-          onPress={() => {
-            navigation.navigate('Home');
-          }
-          }
-        >
-          Home
-        </Text>
-    })
+  //   navigationOptions: ({ navigation }) => ({
+  //     // title: 'FB Login' || `${navigation.state.params.title}`,
+  //     title: 'FB',
+  //     headerRight:
+  //       <Text
+  //         onPress={() => {
+  //           navigation.navigate('Home');
+  //         }
+  //         }
+  //       >
+  //         Home
+  //       </Text>
+  //   })
   },
-});
+},
+// {
+//   navigationOptions: {
+//     title: 'FB stack'
+//   }
+// }
+);
 
 const MenuDrawer = DrawerNavigator(
   {
@@ -138,7 +147,7 @@ const DrawerNav = StackNavigator(
 
 const MainNav = StackNavigator(
   {
-    Login: {
+    LoginNav: {
       screen: LoginStack,
     },
     Home: {

@@ -7,6 +7,7 @@ import MainNav from '../Nav/Router';
 
 export default (state, action) => {
     const newState = MainNav.router.getStateForAction(action, state);
+    // debugger;
 
     return newState || state;
 };

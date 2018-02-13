@@ -1,3 +1,3 @@
-import MainNav from '../Router';
+import MainNav from '../Nav/Router';
 
 export const homeNavAction = MainNav.router.getActionForPathAndParams('Home');

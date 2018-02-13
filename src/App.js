@@ -5,7 +5,8 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
 import reducers from './reducers';
-import Router from './Router';
+// import Router from './Nav/Router';
+import MainNavigation from './containers/NavContainer';
 
 console.ignoredYellowBox = ['Remote debugger'];
 
@@ -27,7 +28,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
          <View style={{ flex: 1 }}>
-            <Router />
+            <MainNavigation />
          </View>
       </Provider>
     );

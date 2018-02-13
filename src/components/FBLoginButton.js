@@ -146,6 +146,13 @@ export default class FBLoginButton extends Component {
     });
   };
 
+  goToHomeScreen = () => {
+      const goHome = NavigationActions.navigate({
+          routeName: 'Home'
+      });
+    this.props.navigation.dispatch(goHome);
+  };
+
 // Add listener to see if the user is signed in to Firebase
   _isLoggedin = () => {
     // console.log('isSignedIn in _isLoggedin');
@@ -169,7 +176,8 @@ export default class FBLoginButton extends Component {
             // console.log('isSignedIn after logged in');
             // console.log(this.props.isSignedIn);
             // debugger;
-            this.props.navigation.navigate('Home');
+            // this.props.navigation.navigate('Home');
+            this.goToHomeScreen();
             // console.log(currentUser);
           })
           .catch((error) => {

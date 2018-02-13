@@ -3,13 +3,13 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
-import Login from './components/Login';
-import Home from './components/Home';
-import ChatRooms from './containers/ChatRooms';
-import GivingPage from './components/Giving';
-import ContactForm from './components/ContactForm';
-import Announcements from './components/Announcements';
-import SettingsMenu from './components/Settings';
+import Login from '../components/Login';
+import Home from '../components/Home';
+import ChatRooms from '../containers/ChatRooms';
+import GivingPage from '../components/Giving';
+import ContactForm from '../components/ContactForm';
+import Announcements from '../components/Announcements';
+import SettingsMenu from '../components/Settings';
 
 // import MenuImage from './assets/menu_burger.png';
 // import ChatMenuButton from './components/ChatMenuButton';
@@ -75,7 +75,7 @@ const MessagesNav = StackNavigator(
 const LoginStack = StackNavigator(
   {
   // TODO: only allow navigation to home page if authenticated
-  Login: {
+  LoginScreen: {
     screen: Login,
   //   navigationOptions: ({ navigation }) => ({
   //     // title: 'FB Login' || `${navigation.state.params.title}`,

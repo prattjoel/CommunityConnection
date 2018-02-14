@@ -20,12 +20,11 @@ export default class FBLoginButton extends Component {
   // });
 
   static navigationOptions = ({ navigation }) => {
-    debugger;
-    const titleText = 'LoginDefault';
+    // debugger;
+    const titleText = 'Logout';
     const updatedTitile = navigation.state.params ? navigation.state.params.title : titleText;
 
     return ({
-      // title: 'FB Login' || `${navigation.state.params.title}`,
       title: updatedTitile,
       headerRight:
         <Text
@@ -48,6 +47,11 @@ export default class FBLoginButton extends Component {
     // this.props.navigation.setParams({ title: 'FB' });
 
     this._isLoggedin();
+    if (this.props.isSignedIn) {
+        this.props.navigation.setParams({ title: 'Logout' });
+    } else {
+        this.props.navigation.setParams({ title: 'Login' });
+    }
   }
 
 //   testFunction = () => {

@@ -108,7 +108,7 @@ const MenuDrawer = DrawerNavigator(
       screen: SettingsMenu
     },
     Logout: {
-      screen: LoginStack
+      screen: LoginStack,
     },
   },
   {

@@ -15,31 +15,36 @@ import { NavigationActions } from 'react-navigation';
 import User from '../User';
 
 export default class FBLoginButton extends Component {
-  // static navigationOptions = ({ navigation }) => ({
-  //   title: navigation.state.params.title
-  // });
 
   static navigationOptions = ({ navigation }) => {
     // debugger;
     const titleText = 'Logout';
     const updatedTitile = navigation.state.params ? navigation.state.params.title : titleText;
 
+    const displayHomeButton = () => {
+          console.log('test showHomeButton');
+          // return 'test';
+          if (navigation.state.params) {
+              if (navigation.state.params.showHomeButton) {
+                  const button =
+                  (
+                    <Text
+                    onPress={() => {
+                    navigation.navigate('Home');
+                    }
+                    }
+                    >
+                    Home
+                </Text>
+            );
+            return button;
+              }
+    }
+};
+
     return ({
       title: updatedTitile,
-      headerRight:
-        <Text
-          onPress={() => {
-              navigation.navigate('Home');
-              // if (this.props.isSignedIn) {
-              //     console.log('signin status home button');
-              //     console.log(this.props.isSignedIn);
-              //     navigation.navigate('Home');
-              // }
-          }
-          }
-        >
-          Home
-        </Text>
+      headerRight: displayHomeButton()
     });
 }
 
@@ -48,34 +53,12 @@ export default class FBLoginButton extends Component {
 
     this._isLoggedin();
     if (this.props.isSignedIn) {
-        this.props.navigation.setParams({ title: 'Logout' });
+        this.props.navigation.setParams({ title: 'Logout', showHomeButton: true });
     } else {
-        this.props.navigation.setParams({ title: 'Login' });
+        this.props.navigation.setParams({ title: 'Login', showHomeButton: false });
     }
   }
 
-//   testFunction = () => {
-//       return 'testFunction';
-//   }
-//
-//   showHomeButton() {
-//       console.log('test showHomeButton');
-//       return 'test';
-//       if (this.props.isSignedIn) {
-//           const button =
-//           (
-//             <Text
-//             onPress={() => {
-//             navigation.navigate('Home');
-//             }
-//             }
-//             >
-//             Home
-//         </Text>
-//     );
-//     return button;
-// }
-//   }
 
 // Login user to firebase using acces token from Facebook login
   _firebaseLogin = (token) => {
@@ -107,7 +90,7 @@ export default class FBLoginButton extends Component {
     // });
     // this.props.navigation.dispatch(disableHeaderButton);
     // this.props.navigation.setParams({ title: 'FB' });
-    this.props.navigation.setParams({ title: 'Login' });
+    this.props.navigation.setParams({ title: 'Login', showHomeButton: false });
     // console.log(this.props.navigation);
 
     firebase.auth().signOut().then(

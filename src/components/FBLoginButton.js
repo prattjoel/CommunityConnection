@@ -22,7 +22,7 @@ export default class FBLoginButton extends Component {
     const updatedTitile = navigation.state.params ? navigation.state.params.title : titleText;
 
     const displayHomeButton = () => {
-          console.log('test showHomeButton');
+          // console.log('test showHomeButton');
           // return 'test';
           if (navigation.state.params) {
               if (navigation.state.params.showHomeButton) {
@@ -83,13 +83,6 @@ export default class FBLoginButton extends Component {
 
   // Logout user from Firebase
   _firebaseLogout = () => {
-    // debugger;
-    // const disableHeaderButton = NavigationActions.setParams({
-    //   params: { headerRight: null },
-    //   key: 'Login'
-    // });
-    // this.props.navigation.dispatch(disableHeaderButton);
-    // this.props.navigation.setParams({ title: 'FB' });
     this.props.navigation.setParams({ title: 'Login', showHomeButton: false });
     // console.log(this.props.navigation);
 

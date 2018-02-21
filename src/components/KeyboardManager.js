@@ -49,14 +49,14 @@ export default class KeyboardManager extends Component {
         // console.log('Keyboard Hidden');
     }
 
-  render() {
-    return (
-        <Animated.View
-            style={{ flex: 1, paddingBottom: this.keyboardHeight }}
-        >
-            {this.props.children}
-        </Animated.View>
+    render() {
+        return (
+            <Animated.View
+                style={{ flex: 1, paddingBottom: this.keyboardHeight }}
+                >
+                    {this.props.children}
+                </Animated.View>
 
-    );
-  }
-}
+            );
+        }
+    }

@@ -1,7 +1,7 @@
 'use-strict';
 
 import React, { Component } from 'react';
-import { View } from 'react-native';
+// import { View } from 'react-native';
 import Messages from './Messages';
 import MessageInput from './MessageInput';
 import KeyboardManager from './KeyboardManager';

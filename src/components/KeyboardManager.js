@@ -15,9 +15,9 @@ export default class KeyboardManager extends Component {
 
     componentWillMount() {
         this.keyboardDidShowListener = Keyboard
-        .addListener('keyboardDidShow', this._keyboardDidShow);
+        .addListener('keyboardWillShow', this.keyboardWillShow);
         this.keyboardDidHideListener = Keyboard
-        .addListener('keyboardDidHide', this._keyboardDidHide);
+        .addListener('keyboardWillHide', this.keyboardWillHide);
     }
 
     componentWillUnMount() {
@@ -25,29 +25,28 @@ export default class KeyboardManager extends Component {
         this.keyboardDidHideListener.remove();
     }
 
-    _keyboardDidShow = (event) => {
-        Animated.parallel(
-            [Animated.timing(
-                this.keyboardHeight,
-                {
-                    duration: event.duration,
-                    toValue: event.endCoordinates.height
-                }
-            )]
+    keyboardWillShow = (event) => {
+        // console.log('Keyboard Shown');
+        // console.log('duration:');
+        // console.log(event.duration);
+        Animated.timing(
+            this.keyboardHeight,
+            {
+                duration: event.duration,
+                toValue: event.endCoordinates.height
+            }
         ).start();
-        console.log('Keyboard Shown');
+        // console.log('Keyboard Shown 2');
     }
-    _keyboardDidHide = (event) => {
-        Animated.parallel(
-            [Animated.timing(
-                this.keyboardHeight,
-                {
-                    duration: event.duration,
-                    toValue: 0
-                }
-            )]
+    keyboardWillHide = (event) => {
+        Animated.timing(
+            this.keyboardHeight,
+            {
+                duration: event.duration,
+                toValue: 0
+            }
         ).start();
-        console.log('Keyboard Hidden');
+        // console.log('Keyboard Hidden');
     }
 
   render() {

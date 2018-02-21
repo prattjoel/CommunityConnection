@@ -23,6 +23,7 @@ export default class KeyboardManager extends Component {
     componentWillUnMount() {
         this.keyboardDidShowListener.remove();
         this.keyboardDidHideListener.remove();
+        // Keyboard.dismiss();
     }
 
     keyboardWillShow = (event) => {

@@ -46,9 +46,19 @@ const MessagesNav = StackNavigator(
         },
         Messages: {
             screen: Home,
-            navigationOptions: {
-                headerTitle: 'Current Messages'
-            },
+            navigationOptions: ({ navigation }) => ({
+                headerTitle: 'Current Messages',
+                headerLeft:
+                <Text
+                    onPress={() => {
+                        Keyboard.dismiss();
+                        navigation.goBack();
+                    }
+                    }
+                >
+                    Back
+                </Text>
+            }),
         },
     },
     {

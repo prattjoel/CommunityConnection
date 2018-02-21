@@ -1,7 +1,7 @@
 'use-strict';
 
 import React, { Component } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Keyboard } from 'react-native';
 import ChatRoomListItem from './ChatRoomListItem';
 import {
   GENERAL_CHAT_ROOM,
@@ -20,6 +20,7 @@ export default class ChatRoomList extends Component {
       // console.log('Chatroom: ');
       // console.log(this.props.currentChatRoom);
       // debugger;
+      // Keyboard.dismiss();
   }
 
   updateChatRoom = (room) => {

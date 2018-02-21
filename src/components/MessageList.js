@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { FlatList, View } from 'react-native';
 import MessageText from './MessageText';
-import KeyboardManager from './KeyboardManager';
+// import KeyboardManager from './KeyboardManager';
 
 export default class MessageList extends Component {
 
@@ -50,8 +50,7 @@ export default class MessageList extends Component {
   render() {
     // debugger;
     return (
-        <KeyboardManager>
-            <View style={{ flex: 10, backgroundColor: 'white' }}>
+            <View style={{ flex: 10, backgroundColor: 'white', paddingBottom: 25 }}>
               <FlatList
                 data={this.props.messagesToDisplay.reverse()}
                 renderItem={this.renderItem}
@@ -59,7 +58,6 @@ export default class MessageList extends Component {
                 inverted
               />
             </View>
-        </KeyboardManager>
     );
   }
 }

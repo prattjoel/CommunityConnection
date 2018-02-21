@@ -17,8 +17,8 @@ const data = [
 
 export default class ChatRoomList extends Component {
   componentWillMount() {
-      console.log('Chatroom: ');
-      console.log(this.props.currentChatRoom);
+      // console.log('Chatroom: ');
+      // console.log(this.props.currentChatRoom);
       // debugger;
   }
 

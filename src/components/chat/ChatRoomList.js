@@ -44,6 +44,7 @@ export default class ChatRoomList extends Component {
   render() {
       return (
         <FlatList
+            style={{ backgroundColor: '#fff' }}
           data={data}
           renderItem={this.renderChatRoom}
           keyboardDismissMode='on-drag'

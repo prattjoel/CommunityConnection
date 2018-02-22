@@ -11,7 +11,7 @@ const MessageText = (props) => {
     return (
       <View style={styles.containerStyle}>
         <Image
-          source={require('../assets/profilePlaceholder.png')}
+          source={require('../../assets/profilePlaceholder.png')}
           style={{ width: 20, height: 20 }}
         />
         <View>

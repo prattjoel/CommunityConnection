@@ -3,7 +3,7 @@
 import React from 'react';
 import { Text, Keyboard } from 'react-native';
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
-import Login from '../components/Login';
+import Login from '../containers/Login';
 import Home from '../components/Home';
 import ChatRooms from '../containers/ChatRooms';
 import GivingPage from '../components/Giving';

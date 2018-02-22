@@ -2,7 +2,7 @@
 
 import { connect } from 'react-redux';
 import { signInUser } from '../actions';
-import FBLoginButton from './FBLoginButton';
+import FBLoginButton from '../components/login/FBLoginButton';
 
 const mapStateToProps = state => {
   // console.log('mapStateToProps called');

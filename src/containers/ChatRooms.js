@@ -3,7 +3,7 @@
 import { connect } from 'react-redux';
 import { setChatRoom } from '../actions/ChatRoomActions';
 import { getMessages } from '../actions/MessageActions';
-import ChatRoomList from '../components/ChatRoomList';
+import ChatRoomList from '../components/chat/ChatRoomList';
 // import MessageList from '../components/MessageList';
 
 //

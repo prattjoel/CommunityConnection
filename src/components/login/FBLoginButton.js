@@ -12,7 +12,7 @@ import {
   AccessToken
 } from 'react-native-fbsdk';
 import { NavigationActions } from 'react-navigation';
-import User from '../User';
+import User from '../../User';
 
 export default class FBLoginButton extends Component {
 

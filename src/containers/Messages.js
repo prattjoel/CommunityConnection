@@ -3,7 +3,7 @@
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { getMessages } from '../actions/MessageActions';
-import MessageList from './MessageList';
+import MessageList from '../components/chat/MessageList';
 
 // Send message information as props to MessageList Component
 const mapStateToProps = state => {

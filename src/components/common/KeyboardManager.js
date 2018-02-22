@@ -14,6 +14,8 @@ export default class KeyboardManager extends Component {
     }
 
     componentWillMount() {
+        // this.keyboardWillShow.bind(this);
+        // this.keyboardWillHide.bind(this);
         this.keyboardDidShowListener = Keyboard
         .addListener('keyboardWillShow', this.keyboardWillShow);
         this.keyboardDidHideListener = Keyboard

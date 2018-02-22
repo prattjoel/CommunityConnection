@@ -7,7 +7,7 @@ import {
   GENERAL_CHAT_ROOM,
   PRAYER_CHAT_ROOM,
   SMALL_GROUP_CHAT_ROOM
-} from '../constants/chatRoomTypes.js';
+} from '../../constants/chatRoomTypes.js';
 
 const data = [
   { room: 'Prayer', key: PRAYER_CHAT_ROOM },
@@ -46,6 +46,7 @@ export default class ChatRoomList extends Component {
         <FlatList
           data={data}
           renderItem={this.renderChatRoom}
+          keyboardDismissMode='on-drag'
         />
       );
     }

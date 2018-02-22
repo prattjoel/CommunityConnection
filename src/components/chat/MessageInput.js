@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {
   messageChanged,
   sendMessage
-} from '../actions/MessageActions';
+} from '../../actions/MessageActions';
 import MessageInputField from './MessageInputField';
 
 const mapStateToProps = state => {

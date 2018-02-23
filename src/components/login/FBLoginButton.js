@@ -63,6 +63,9 @@ export default class FBLoginButton extends Component {
 
 // Login user to firebase using acces token from Facebook login
   _firebaseLogin = (token) => {
+      this.props.updateLoading(true);
+      console.log('loading status firbaseLogin:');
+      console.log(this.props.isLoading);
     const credential = firebase.auth.FacebookAuthProvider.credential(token);
     firebase.auth().signInWithCredential(credential)
       .then((result) => {
@@ -75,6 +78,9 @@ export default class FBLoginButton extends Component {
         this._createUser(displayName, uid, token);
         // console.log(user);
         // console.log(`User token is: ${token}`);
+        this.props.updateLoading(false);
+        console.log('loading status after firbaseLogin:');
+        console.log(this.props.isLoading);
       })
       .catch((error) => {
         console.log('error is: ');
@@ -185,6 +191,7 @@ export default class FBLoginButton extends Component {
             const name = snapshot.child('name').val();
             const email = snapshot.child('email').val();
             const currentUser = new User(name, email, userID);
+            // debugger;
             this.props.updateSignIn(true);
             // console.log('isSignedIn after logged in');
             // console.log(this.props.isSignedIn);
@@ -214,7 +221,7 @@ export default class FBLoginButton extends Component {
             onLogoutFinished={this._firebaseLogout.bind(this)}
           />
           <Spinner
-              animating={!this.props.isSignedIn}
+              animating={this.props.isLoading}
           />
         </View>
     );

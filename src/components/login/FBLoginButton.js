@@ -13,6 +13,7 @@ import {
 } from 'react-native-fbsdk';
 import { NavigationActions } from 'react-navigation';
 import User from '../../User';
+import Spinner from '../common/Spinner';
 
 export default class FBLoginButton extends Component {
 
@@ -211,6 +212,9 @@ export default class FBLoginButton extends Component {
             readPermissions={['public_profile']}
             onLoginFinished={this._fbLoginComplete.bind(this)}
             onLogoutFinished={this._firebaseLogout.bind(this)}
+          />
+          <Spinner
+              animating={!this.props.isSignedIn}
           />
         </View>
     );

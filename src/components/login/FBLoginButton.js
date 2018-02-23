@@ -225,14 +225,18 @@ export default class FBLoginButton extends Component {
                 render() {
                     return (
                         <View style={styles.containerStyle}>
-                            <LoginButton
+                            {
+                                !this.props.isLoading &&
+                                <LoginButton
                                 readPermissions={['public_profile']}
                                 onLoginFinished={this._fbLoginComplete.bind(this)}
                                 onLogoutFinished={this._firebaseLogout.bind(this)}
-                            />
-                            <Spinner
-                                animating={this.props.isLoading}
-                            />
+                                />
+                            }
+                            {
+                                this.props.isLoading &&
+                                <Spinner />
+                            }
                         </View>
                     );
                 }

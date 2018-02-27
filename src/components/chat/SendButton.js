@@ -6,11 +6,11 @@ import {
   Text
 } from 'react-native';
 
-const sendButton = ({ onPress }) => {
+const sendButton = ({ children, onPress }) => {
   return (
      <TouchableOpacity onPress={onPress} style={styles.buttonStyle}>
        <Text style={styles.textStyle}>
-         Send
+         {children}
        </Text>
      </TouchableOpacity>
    );

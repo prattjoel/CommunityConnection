@@ -35,7 +35,9 @@ export default class MessageInputField extends Component {
         />
         <SendButton
           onPress={this.onSendButtonPressed.bind(this)}
-        />
+        >
+            Send
+        </SendButton>
       </View>
     );
   }

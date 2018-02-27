@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { View, TextInput } from 'react-native';
-import SendButton from './SendButton';
+import Button from '../common/Button';
 
 export default class MessageInputField extends Component {
   componentWillMount() {
@@ -33,11 +33,14 @@ export default class MessageInputField extends Component {
           onChangeText={this.onMessageChange.bind(this)}
           value={this.props.message}
         />
-        <SendButton
+        <Button>
+            Image
+        </Button>
+        <Button
           onPress={this.onSendButtonPressed.bind(this)}
         >
             Send
-        </SendButton>
+        </Button>
       </View>
     );
   }

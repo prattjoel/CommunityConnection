@@ -6,7 +6,7 @@ import {
   Text
 } from 'react-native';
 
-const sendButton = ({ children, onPress }) => {
+const Button = ({ children, onPress }) => {
   return (
      <TouchableOpacity onPress={onPress} style={styles.buttonStyle}>
        <Text style={styles.textStyle}>
@@ -38,4 +38,4 @@ const styles = {
   }
 };
 
-export default sendButton;
+export default Button;

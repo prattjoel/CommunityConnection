@@ -35,6 +35,8 @@
 	<string>1535493123194614</string>
 	<key>FacebookDisplayName</key>
 	<string>CommunityConnect</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>So you can send images with messages</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

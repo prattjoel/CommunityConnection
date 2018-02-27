@@ -1,7 +1,11 @@
 'use-strict';
 
 import React, { Component } from 'react';
-import { View, TextInput } from 'react-native';
+import {
+    View,
+    TextInput,
+    CameraRoll
+} from 'react-native';
 import Button from '../common/Button';
 
 export default class MessageInputField extends Component {
@@ -24,6 +28,13 @@ export default class MessageInputField extends Component {
     }
   }
 
+  onImageButtonPressed() {
+      CameraRoll.getPhotos({ first: 1000000 })
+      .then(res => {
+          console.log(res, 'images data');
+    });
+  }
+
   render() {
     return (
       <View style={styles.containerStyle}>
@@ -33,7 +44,9 @@ export default class MessageInputField extends Component {
           onChangeText={this.onMessageChange.bind(this)}
           value={this.props.message}
         />
-        <Button>
+        <Button
+            onPress={this.onImageButtonPressed.bind(this)}
+        >
             Image
         </Button>
         <Button

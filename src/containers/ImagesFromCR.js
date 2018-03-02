@@ -6,9 +6,11 @@ import ImageSelector from '../components/chat/ImageSelector';
 
 
 const mapStateToProps = state => {
+    const { currentImages, showImages } = state.imagesFromCR;
     return (
         {
-            currentImages: state.currentImages
+            currentImages,
+            showImages
         }
     );
 };

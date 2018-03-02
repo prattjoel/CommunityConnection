@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import Messages from '../containers/Messages';
 import MessageInput from './chat/MessageInput';
 import KeyboardManager from './common/KeyboardManager';
+import ImagesFromCR from '../containers/ImagesFromCR';
 
 export default class HomePage extends Component {
     // componentWillUnMount() {
@@ -16,6 +17,7 @@ export default class HomePage extends Component {
             <KeyboardManager style={{ flex: 1 }}>
                 <Messages />
                 <MessageInput />
+                <ImagesFromCR />
             </KeyboardManager>
         );
     }

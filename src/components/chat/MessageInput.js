@@ -5,6 +5,10 @@ import {
   messageChanged,
   sendMessage
 } from '../../actions/MessageActions';
+import {
+    setCurrentImages,
+    toggleImageSelector
+} from '../../actions/ImageActions';
 import MessageInputField from './MessageInputField';
 
 const mapStateToProps = state => {
@@ -24,7 +28,13 @@ const mapDispatchToProps = dispatch => {
     },
       sendMessageText: (message, currentChatRoom) => {
         dispatch(sendMessage(message, currentChatRoom));
-      }
+    },
+        setCurrentImages: (currentImages) => {
+        dispatch(setCurrentImages(currentImages));
+    },
+        showImageSelector: (showImages) => {
+            dispatch(toggleImageSelector(showImages));
+    }
   });
 };
 

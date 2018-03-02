@@ -31,7 +31,9 @@ export default class MessageInputField extends Component {
   onImageButtonPressed() {
       CameraRoll.getPhotos({ first: 1000000 })
       .then(res => {
-          console.log(res, 'images data');
+          const imageArray = res.edges;
+          this.props.setCurrentImages(imageArray);
+          // console.log(res, 'images data');
     });
   }
 

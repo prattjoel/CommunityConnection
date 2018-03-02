@@ -7,11 +7,22 @@ import {
 } from 'react-native';
 
 export default class ImageSelector extends Component {
-  render() {
-    return (
-        <Text>
-            Image Selector
-        </Text>
-    );
-  }
-}
+    // componentDidMount() {
+    //     // debugger;
+    //     console.log('showImages in componentDidMount');
+    //     console.log(this.props.showImages);
+    // }
+    render() {
+        return (
+            <Modal
+                animationType="slide"
+                transparent={false}
+                visible={this.props.showImages}
+            >
+                    <Text>
+                        Image Selector
+                    </Text>
+            </Modal>
+            );
+        }
+    }

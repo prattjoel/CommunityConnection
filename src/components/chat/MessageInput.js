@@ -15,7 +15,8 @@ const mapStateToProps = state => {
   return (
     {
       message: state.messages.messageText,
-      currentChatRoom: state.chatRooms.currentChatRoom
+      currentChatRoom: state.chatRooms.currentChatRoom,
+      showImages: state.imagesFromCR.showImages
     }
   );
 };

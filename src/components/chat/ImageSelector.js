@@ -37,7 +37,7 @@ export default class ImageSelector extends Component {
                     <PhotoList
                         currentImages={this.props.currentImages}
                     />
-                    <View style={{ flex: 1, flexDirection: 'row', borderWidth: 5, borderColor: 'blue' }}>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
                         <Button
                             onPress={this.onPressDoneButton.bind(this)}
                         >

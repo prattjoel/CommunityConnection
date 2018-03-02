@@ -24,14 +24,14 @@ export default class PhotoList extends Component {
 
     render() {
         return (
-            <View style={{ flex: 10, borderWidth: 5, borderColor: 'red', paddingTop: 10 }}>
+            <View style={{ flex: 10, paddingTop: 20 }}>
                 <FlatList
                     // style={{ flexDirection: 'column', borderWidth: 5, borderColor: 'black' }}
                     data={this.props.currentImages}
                     renderItem={this.renderItem}
                     keyExtractor={this.keyExtractor}
-                    // numColumn={3}
-                    horizontal
+                    numColumns={3}
+                    // horizontal
                 />
             </View>
         );

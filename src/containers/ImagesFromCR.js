@@ -1,7 +1,10 @@
 'use strict';
 
 import { connect } from 'react-redux';
-import { setCurrentImages } from '../actions/ImageActions';
+import {
+    setCurrentImages,
+    toggleImageSelector
+ } from '../actions/ImageActions';
 import ImageSelector from '../components/chat/ImageSelector';
 
 
@@ -20,7 +23,10 @@ const mapDispatchToProps = dispatch => {
             {
             setCurrentImages: (currentImages) => {
                 dispatch(setCurrentImages(currentImages));
-            }
+            },
+            showImageSelector: (showImages) => {
+                dispatch(toggleImageSelector(showImages));
+        }
         }
     );
 };

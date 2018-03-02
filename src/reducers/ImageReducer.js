@@ -16,8 +16,8 @@ export default (state = initialState, action) => {
         case SET_CURRENT_IMAGES:
             return { ...state, currentImages: action.payload };
         case SHOW_IMAGE_SELECTOR:
-            console.log('showImages');
-            console.log(action.payload);
+            // console.log('showImages');
+            // console.log(action.payload);
             return { ...state, showImages: action.payload };
         default:
             return state;

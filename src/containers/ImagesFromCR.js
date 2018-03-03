@@ -3,37 +3,42 @@
 import { connect } from 'react-redux';
 import {
     setCurrentImages,
-    toggleImageSelector
- } from '../actions/ImageActions';
+    toggleImageSelector,
+    selectImageToSend
+} from '../actions/ImageActions';
 import ImageSelector from '../components/chat/ImageSelector';
 
 
 const mapStateToProps = state => {
-    const { currentImages, showImages } = state.imagesFromCR;
+    const { currentImages, showImages, selectedImages } = state.imagesFromCR;
     return (
         {
             currentImages,
-            showImages
+            showImages,
+            selectedImages
         }
     );
 };
 
 const mapDispatchToProps = dispatch => {
-        return (
-            {
+    return (
+        {
             setCurrentImages: (currentImages) => {
                 dispatch(setCurrentImages(currentImages));
             },
             showImageSelector: (showImages) => {
                 dispatch(toggleImageSelector(showImages));
-        }
+            },
+            selectImageToSend: (imageToSend) => {
+                dispatch(selectImageToSend(imageToSend));
+            }
         }
     );
 };
 
 const ImagesFromCR = connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(ImageSelector);
 
 export default ImagesFromCR;

@@ -36,8 +36,10 @@ export default class ImageSelector extends Component {
                 <View style={{ flex: 1, flexDirection: 'column' }}>
                     <PhotoList
                         currentImages={this.props.currentImages}
+                        selectedImages={this.props.selectedImages}
+                        selectImageToSend={this.props.selectImageToSend}
                     />
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
                         <Button
                             onPress={this.onPressDoneButton.bind(this)}
                         >

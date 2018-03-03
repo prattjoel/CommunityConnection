@@ -2,12 +2,14 @@
 
 import {
     SET_CURRENT_IMAGES,
-    SHOW_IMAGE_SELECTOR
+    SHOW_IMAGE_SELECTOR,
+    SELECT_IMAGE_TO_SEND
 } from '../constants/ImageTypes';
 
 const initialState = {
     currentImages: [],
-    showImages: false
+    showImages: false,
+    selectedImages: []
 };
 
 export default (state = initialState, action) => {
@@ -19,6 +21,13 @@ export default (state = initialState, action) => {
             // console.log('showImages');
             // console.log(action.payload);
             return { ...state, showImages: action.payload };
+        case SELECT_IMAGE_TO_SEND:
+        // debugger;
+            {
+                const selectedImages = state.selectedImages;
+                selectedImages.push(action.payload);
+            return { ...state, selectedImages };
+            }
         default:
             return state;
     }

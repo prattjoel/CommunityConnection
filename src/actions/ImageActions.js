@@ -2,7 +2,8 @@
 
 import {
     SET_CURRENT_IMAGES,
-    SHOW_IMAGE_SELECTOR
+    SHOW_IMAGE_SELECTOR,
+    SELECT_IMAGE_TO_SEND
 } from '../constants/ImageTypes';
 
 export const setCurrentImages = currentImages => {
@@ -17,6 +18,15 @@ export const toggleImageSelector = showImageSelector => {
         {
             type: SHOW_IMAGE_SELECTOR,
             payload: showImageSelector
+        }
+    );
+};
+
+export const selectImageToSend = imageToSend => {
+    return (
+        {
+            type: SELECT_IMAGE_TO_SEND,
+            payload: imageToSend
         }
     );
 };

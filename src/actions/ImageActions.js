@@ -6,7 +6,16 @@ import {
     SELECT_IMAGE_TO_SEND
 } from '../constants/ImageTypes';
 
-export const setCurrentImages = currentImages => {
+export const setCurrentImages = imagesFromCameraRoll => {
+    const currentImages = imagesFromCameraRoll
+    .map(imageInfo => {
+        return {
+        uri: imageInfo.node.image.uri,
+        filename: imageInfo.node.image.filename,
+        isSelected: false
+    };
+});
+// debugger;
   return ({
     type: SET_CURRENT_IMAGES,
     payload: currentImages

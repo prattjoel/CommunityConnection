@@ -19,20 +19,28 @@ export default class PhotoList extends Component {
         console.log('image pressed');
         console.log('selected images onPress');
         console.log(this.props.selectedImages);
-        const imageInfo = {
-            uri: item.node.image.uri,
-            filename: item.node.image.filename
-        };
+        // const imageInfo = {
+        //     uri: item.node.image.uri,
+        //     filename: item.node.image.filename,
+        //     opacity: 0.5
+        // };
 
-        this.props.selectImageToSend(imageInfo);
+        this.props.selectImageToSend(item);
     }
 
     keyExtractor = (item) => {
-        return item.node.image.filename;
+        return item.filename;
     }
 
-    highlightImage = () => {
+    highlightImage = (item) => {
+        // debugger;
+        const index = this.props.selectedImages.map((image) => image.filename)
+        .indexOf(item.filename);
 
+        if (index !== -1) {
+            return 0.5;
+        }
+        return 1;
     }
 
     renderItem = ({ item }) => {
@@ -42,10 +50,9 @@ export default class PhotoList extends Component {
                 // activeOpacity={0.5}
             >
                     <Image
-                        source={{ uri: item.node.image.uri }}
-                        style={styles.imageStyle}
-
-                        // style={{ ...styles.imageStyle, opacity: this.highlightImage() }}
+                        source={{ uri: item.uri }}
+                        // style={styles.imageStyle}
+                        style={{ ...styles.imageStyle, opacity: this.highlightImage(item) }}
                     />
                 </TouchableHighlight>
             );

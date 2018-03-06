@@ -32,10 +32,11 @@ export const toggleImageSelector = showImageSelector => {
 };
 
 export const selectImageToSend = imageToSend => {
+    const updatedImage = { ...imageToSend, isSelected: !imageToSend.isSelected };
     return (
         {
             type: SELECT_IMAGE_TO_SEND,
-            payload: imageToSend
+            payload: updatedImage
         }
     );
 };

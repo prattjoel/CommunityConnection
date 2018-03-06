@@ -10,7 +10,7 @@ import {
 const initialState = {
     currentImages: [],
     showImages: false,
-    selectedImages: []
+    selectedImage: {}
 };
 
 export default (state = initialState, action) => {
@@ -25,15 +25,19 @@ export default (state = initialState, action) => {
         case SELECT_IMAGE_TO_SEND:
         // debugger;
         {
-            const selectedImages = state.selectedImages;
-            const index = selectedImages.map((image) => image.filename)
+            // const selectedImages = state.selectedImages;
+            const index = state.currentImages.map((image) => image.filename)
             .indexOf(action.payload.filename);
-            if (index !== -1) {
-                const currentSelectedImages = selectedImages.splice(index, 1);
-                return { ...state, currentSelectedImages };
+            if (index === -1) {
+                return state;
             }
-            selectedImages.push(action.payload);
-            return { ...state, selectedImages };
+                const updatedImages = state.currentImages;
+                updatedImages[index] = action.payload;
+                // const currentSelectedImages = selectedImages.splice(index, 1);
+                return { ...state, currentImages: updatedImages, selectedImage: action.payload };
+
+            // selectedImages.push(action.payload);
+            // return { ...state, selectedImages };
         }
 
         default:

@@ -10,15 +10,18 @@ import {
 
 export default class PhotoList extends Component {
 
-    componentWillReceiveProps() {
-        console.log('selected images after selection made');
-        console.log(this.props.selectedImages);
+    componentWillReceiveProps(nextProps) {
+        console.log('PhotoList: currentImages after selection made');
+        console.log(this.props.currentImages);
+        console.log('nextProps');
+        console.log(nextProps);
     }
 
     onPress = (item) => {
-        console.log('image pressed');
-        console.log('selected images onPress');
-        console.log(this.props.selectedImages);
+        // console.log('image pressed');
+        // console.log('current images onPress');
+        // console.log(this.props.currentImages);
+        // console.log(this.props.selectedImages);
         // const imageInfo = {
         //     uri: item.node.image.uri,
         //     filename: item.node.image.filename,
@@ -34,27 +37,35 @@ export default class PhotoList extends Component {
 
     highlightImage = (item) => {
         // debugger;
-        const index = this.props.selectedImages.map((image) => image.filename)
-        .indexOf(item.filename);
-
-        if (index !== -1) {
-            return 0.5;
-        }
-        return 1;
+        const opacityValue = (item.isSelected ? 0.5 : 1.0);
+        // const newStyle = { ...styles.imageStyle, opacity: opacityValue };
+        const newStyle = { opacity: opacityValue };
+        return newStyle;
+        // const index = this.props.selectedImages.map((image) => image.filename)
+        // .indexOf(item.filename);
+        //
+        // if (index !== -1) {
+        //     return 0.5;
+        // }
+        // return 1;
     }
 
     renderItem = ({ item }) => {
+        // debugger;
+        // const updatedStyle = this.highlightImage(item);
         return (
             <TouchableHighlight
                 onPress={this.onPress.bind(this, item)}
+                style={this.highlightImage(item)}
                 // activeOpacity={0.5}
             >
                     <Image
                         source={{ uri: item.uri }}
                         // style={styles.imageStyle}
-                        style={{ ...styles.imageStyle, opacity: this.highlightImage(item) }}
+                        style={styles.imageStyle}
+                        // style={{ ...styles.imageStyle, opacity: (item.isSelected ? 0.5 : 1.0) }}
                     />
-                </TouchableHighlight>
+            </TouchableHighlight>
             );
         }
 
@@ -67,6 +78,7 @@ export default class PhotoList extends Component {
                         renderItem={this.renderItem}
                         keyExtractor={this.keyExtractor}
                         numColumns={3}
+                        extraData={this.props.selectedImage}
                         // horizontal
                     />
                 </View>

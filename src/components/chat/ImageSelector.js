@@ -16,6 +16,14 @@ export default class ImageSelector extends Component {
         console.log('currentImages in componentDidMount ImageSelector: ');
         console.log(this.props.currentImages);
     }
+
+    // componentWillReceiveProps(nextProps) {
+    //     console.log('ImageSelector: currentImages after selection made');
+    //     console.log(this.props.currentImages);
+    //     console.log('nextProps');
+    //     console.log(nextProps);
+    // }
+
     onPressDoneButton = () => {
         this.props.showImageSelector(!this.props.showImages);
     }
@@ -36,7 +44,7 @@ export default class ImageSelector extends Component {
                 <View style={{ flex: 1, flexDirection: 'column' }}>
                     <PhotoList
                         currentImages={this.props.currentImages}
-                        selectedImages={this.props.selectedImages}
+                        selectedImage={this.props.selectedImage}
                         selectImageToSend={this.props.selectImageToSend}
                     />
                     <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>

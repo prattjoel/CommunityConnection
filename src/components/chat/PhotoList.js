@@ -5,7 +5,8 @@ import {
     FlatList,
     Image,
     View,
-    TouchableHighlight
+    TouchableHighlight,
+    Text
 } from 'react-native';
 
 export default class PhotoList extends Component {
@@ -50,22 +51,38 @@ export default class PhotoList extends Component {
         // return 1;
     }
 
+    showSelected = (item) => {
+        if (item.isSelected) {
+            return (
+                <Text style={styles.selectedStyle}>
+                    Selected
+                </Text>
+            );
+        }
+    }
+
     renderItem = ({ item }) => {
         // debugger;
         // const updatedStyle = this.highlightImage(item);
         return (
-            <TouchableHighlight
-                onPress={this.onPress.bind(this, item)}
-                style={this.highlightImage(item)}
-                // activeOpacity={0.5}
-            >
-                    <Image
-                        source={{ uri: item.uri }}
-                        // style={styles.imageStyle}
-                        style={styles.imageStyle}
-                        // style={{ ...styles.imageStyle, opacity: (item.isSelected ? 0.5 : 1.0) }}
-                    />
-            </TouchableHighlight>
+
+                <TouchableHighlight
+                    onPress={this.onPress.bind(this, item)}
+                    // style={{ borderWidth: 2, borderColor: 'red', opacity: this.highlightImage(item) }}
+                    style={this.highlightImage(item)}
+
+                    // activeOpacity={0.5}
+                >
+                    <View style={{ flex: 1 }}>
+                        <Image
+                            source={{ uri: item.uri }}
+                            // style={styles.imageStyle}
+                            style={styles.imageStyle}
+                            // style={{ ...styles.imageStyle, opacity: (item.isSelected ? 0.5 : 1.0) }}
+                        />
+                        {this.showSelected(item)}
+                    </View>
+                </TouchableHighlight>
             );
         }
 
@@ -95,5 +112,16 @@ export default class PhotoList extends Component {
             // borderRadius: 5,
             // borderWidth: 1,
             // borderColor: '#979797'
+        },
+        selectedStyle: {
+            fontSize: 16,
+            color: 'white',
+            position: 'absolute',
+            right: 0,
+            // left: 0,
+            // top: 0,
+            bottom: 0,
+            // margin: 'auto',
+            opacity: 1
         }
     };

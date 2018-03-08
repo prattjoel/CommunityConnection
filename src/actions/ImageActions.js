@@ -1,6 +1,7 @@
 'use strict';
 
 import { RNS3 } from 'react-native-aws3';
+import Config from 'react-native-config';
 import {
     SET_CURRENT_IMAGES,
     SHOW_IMAGE_SELECTOR,
@@ -43,12 +44,18 @@ export const selectImageToSend = imageToSend => {
     );
 };
 
+debugger;
+// const key = Config.ACCESS_KEY;
+// console.log(key);
+// const secret = Config.ACCESS_SECRET;
+// console.log(secret);
+
 const imageOptions = {
     keyPrefix: 'message_images/',
     bucket: 'community-connect-image-store',
-    region: 'us-east-1',
-    accessKey: '',
-    secretKey: '',
+    region: 'us-east-2',
+    accessKey: Config.ACCESS_KEY,
+    secretKey: Config.ACCESS_SECRET,
     successActionStatus: 201
 };
 
@@ -62,8 +69,11 @@ export const sendSelectedImages = selectedImages => {
 const sendImage = (dispatch, imageFile) => {
         RNS3.put(imageFile, imageOptions).then(response => {
             if (response.status !== 201) {
+                console.log(response);
                 throw new Error('Image upload failed');
             } else {
+                console.log('response from sending image');
+                console.log(response);
                 dispatch({
                     type: IMAGE_UPLOADED
                 });

@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import {
     setCurrentImages,
     toggleImageSelector,
-    selectImageToSend
+    selectImageToSend,
+    sendSelectedImages
 } from '../actions/ImageActions';
 import ImageSelector from '../components/chat/ImageSelector';
 
@@ -32,6 +33,9 @@ const mapDispatchToProps = dispatch => {
             },
             selectImageToSend: (imageToSend) => {
                 dispatch(selectImageToSend(imageToSend));
+            },
+            sendImage: (imageToSend) => {
+                dispatch(sendSelectedImages(imageToSend));
             }
         }
     );

@@ -26,6 +26,7 @@ export default class ImageSelector extends Component {
 
     onPressDoneButton = () => {
         this.props.showImageSelector(!this.props.showImages);
+        this.props.sendImage(this.props.selectedImage);
     }
 
     onShowImages = () => {
@@ -46,6 +47,7 @@ export default class ImageSelector extends Component {
                         currentImages={this.props.currentImages}
                         selectedImage={this.props.selectedImage}
                         selectImageToSend={this.props.selectImageToSend}
+                        // sendImage={this.props.sendImage}
                     />
                     <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
                         <Button

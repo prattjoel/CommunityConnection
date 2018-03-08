@@ -68,7 +68,7 @@ export default class PhotoList extends Component {
 
                 <TouchableHighlight
                     onPress={this.onPress.bind(this, item)}
-                    // style={{ borderWidth: 2, borderColor: 'red', opacity: this.highlightImage(item) }}
+            // style={{ borderWidth: 2, borderColor: 'red', opacity: this.highlightImage(item) }}
                     style={this.highlightImage(item)}
 
                     // activeOpacity={0.5}
@@ -78,7 +78,7 @@ export default class PhotoList extends Component {
                             source={{ uri: item.uri }}
                             // style={styles.imageStyle}
                             style={styles.imageStyle}
-                            // style={{ ...styles.imageStyle, opacity: (item.isSelected ? 0.5 : 1.0) }}
+                        // style={{ ...styles.imageStyle, opacity: (item.isSelected ? 0.5 : 1.0) }}
                         />
                         {this.showSelected(item)}
                     </View>

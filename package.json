@@ -13,6 +13,7 @@
     "plist": "^2.1.0",
     "react": "16.0.0",
     "react-native": "0.51.0",
+    "react-native-aws3": "0.0.8",
     "react-native-fbsdk": "^0.6.3",
     "react-navigation": "^1.0.0-beta.27",
     "react-redux": "^5.0.6",

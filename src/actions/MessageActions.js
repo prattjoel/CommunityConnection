@@ -15,17 +15,20 @@ export const messageChanged = text => {
 };
 
 // Send massages to database
-export const sendMessage = (message, currentChatRoom) => {
+export const sendMessage = (type, content, currentChatRoom) => {
+    // TODO: handle image messages
+
   const { currentUser } = firebase.auth();
   const timeOptions = { hour: 'numeric', minute: 'numeric' };
   const date = new Date();
   const timestamp = date.toLocaleTimeString('en-us', timeOptions);
   const messageInfo = {
     user: currentUser.uid,
-    message,
     timestamp,
     name: currentUser.displayName
  };
+
+ messageInfo[type] = content;
 
   return (dispatch) => {
     firebase.database().ref(`/chat_rooms/${currentChatRoom}`)

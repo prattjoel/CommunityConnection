@@ -44,7 +44,7 @@ export const selectImageToSend = imageToSend => {
     );
 };
 
-debugger;
+// debugger;
 // const key = Config.ACCESS_KEY;
 // console.log(key);
 // const secret = Config.ACCESS_SECRET;
@@ -74,6 +74,10 @@ const sendImage = (dispatch, imageFile) => {
             } else {
                 console.log('response from sending image');
                 console.log(response);
+                console.log('image url:');
+                console.log(response.body.postResponse.location);
+                // TODO:
+                //Add image to firebase database with url
                 dispatch({
                     type: IMAGE_UPLOADED
                 });

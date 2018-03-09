@@ -31,6 +31,7 @@ export default class MessageList extends Component {
   }
 
   renderItem = ({ item }) => {
+     // TODO: display image messages if message in database has url
     // TODO: create custom list item and render user's info along with message content
     // debugger;
     return (

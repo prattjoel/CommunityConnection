@@ -27,8 +27,8 @@ const mapDispatchToProps = dispatch => {
       updateMessageText: text => {
       dispatch(messageChanged(text));
     },
-      sendMessageText: (message, currentChatRoom) => {
-        dispatch(sendMessage(message, currentChatRoom));
+      sendMessage: (type, content, currentChatRoom) => {
+        dispatch(sendMessage(type, content, currentChatRoom));
     },
         setCurrentImages: (currentImages) => {
         dispatch(setCurrentImages(currentImages));

@@ -17,29 +17,54 @@ export const messageChanged = text => {
 // Send massages to database
 export const sendMessage = (type, content, currentChatRoom) => {
     // TODO: handle image messages
+const messageInfo = prepareMessageToSend(type, content);
+ //  const { currentUser } = firebase.auth();
+ //  const timeOptions = { hour: 'numeric', minute: 'numeric' };
+ //  const date = new Date();
+ //  const timestamp = date.toLocaleTimeString('en-us', timeOptions);
+ //  const messageInfo = {
+ //    user: currentUser.uid,
+ //    timestamp,
+ //    name: currentUser.displayName
+ // };
 
-  const { currentUser } = firebase.auth();
-  const timeOptions = { hour: 'numeric', minute: 'numeric' };
-  const date = new Date();
-  const timestamp = date.toLocaleTimeString('en-us', timeOptions);
-  const messageInfo = {
-    user: currentUser.uid,
-    timestamp,
-    name: currentUser.displayName
- };
-
- messageInfo[type] = content;
-
+ const action = { type: MESSAGE_SENT };
   return (dispatch) => {
-    firebase.database().ref(`/chat_rooms/${currentChatRoom}`)
-      .push(messageInfo)
-      .then(() => {
-        console.log('message sent');
-        dispatch({
-          type: MESSAGE_SENT
-        });
-      });
+      sendMessageToDatabase(dispatch, messageInfo, currentChatRoom, action);
+  //   firebase.database().ref(`/chat_rooms/${currentChatRoom}`)
+  //     .push(messageInfo)
+  //     .then(() => {
+  //       console.log('message sent');
+  //       dispatch({
+  //         type: MESSAGE_SENT
+  //       });
+  //     });
   };
+};
+
+export const prepareMessageToSend = (type, content) => {
+    const { currentUser } = firebase.auth();
+    const timeOptions = { hour: 'numeric', minute: 'numeric' };
+    const date = new Date();
+    const timestamp = date.toLocaleTimeString('en-us', timeOptions);
+    const messageInfo = {
+      user: currentUser.uid,
+      timestamp,
+      name: currentUser.displayName
+   };
+   messageInfo[type] = content;
+   return messageInfo;
+};
+
+export const sendMessageToDatabase = (dispatch, messageInfo, currentChatRoom, action) => {
+    // return () => {
+      firebase.database().ref(`/chat_rooms/${currentChatRoom}`)
+        .push(messageInfo)
+        .then(() => {
+          console.log('message sent');
+          dispatch(action);
+        });
+    // };
 };
 
 // Retrieve messages from database based on the current chat room.

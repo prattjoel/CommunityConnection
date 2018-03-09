@@ -8,6 +8,10 @@ import {
     SELECT_IMAGE_TO_SEND,
     IMAGE_UPLOADED
 } from '../constants/ImageTypes';
+import {
+    prepareMessageToSend,
+    sendMessageToDatabase
+} from './MessageActions';
 
 export const setCurrentImages = imagesFromCameraRoll => {
     const currentImages = imagesFromCameraRoll
@@ -59,14 +63,14 @@ const imageOptions = {
     successActionStatus: 201
 };
 
-export const sendSelectedImages = selectedImages => {
+export const sendSelectedImages = (selectedImages, currentChatRoom) => {
         const imageToSend = prepareImageToSend(selectedImages);
         return (dispatch) => {
-            sendImage(dispatch, imageToSend);
+            sendImage(dispatch, imageToSend, currentChatRoom);
         };
 };
 
-const sendImage = (dispatch, imageFile) => {
+const sendImage = (dispatch, imageFile, currentChatRoom) => {
         RNS3.put(imageFile, imageOptions).then(response => {
             if (response.status !== 201) {
                 console.log(response);
@@ -76,12 +80,25 @@ const sendImage = (dispatch, imageFile) => {
                 console.log(response);
                 console.log('image url:');
                 console.log(response.body.postResponse.location);
+                const photoUrl = response.body.postResponse.location;
+                // debugger;
+                return photoUrl;
                 // TODO:
                 //Add image to firebase database with url
-                dispatch({
-                    type: IMAGE_UPLOADED
-                });
+                // debugger;
+                // // sendMessage('PhotoUrl', photoUrl, currentChatRoom);
+                // dispatch({
+                //     type: IMAGE_UPLOADED,
+                //     payload: photoUrl
+                // });
             }
+        }).then(photoUrl => {
+            // debugger;
+            const messageInfo = prepareMessageToSend('photoUrl', photoUrl);
+            const action = {
+                type: IMAGE_UPLOADED,
+                payload: photoUrl };
+            sendMessageToDatabase(dispatch, messageInfo, currentChatRoom, action);
         });
 };
 

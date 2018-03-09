@@ -11,7 +11,8 @@ import {
 const initialState = {
     currentImages: [],
     showImages: false,
-    selectedImage: {}
+    selectedImage: {},
+    photoUrl: ''
 };
 
 export default (state = initialState, action) => {
@@ -44,7 +45,8 @@ export default (state = initialState, action) => {
                 // return { ...state, selectedImages };
             }
         case IMAGE_UPLOADED:
-            return initialState;
+            // debugger;
+            return { ...initialState, photoUrl: action.payload };
         default:
             return state;
     }

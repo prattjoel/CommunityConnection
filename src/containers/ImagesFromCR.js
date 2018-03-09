@@ -7,16 +7,20 @@ import {
     selectImageToSend,
     sendSelectedImages
 } from '../actions/ImageActions';
+import { sendMessage } from '../actions/MessageActions';
 import ImageSelector from '../components/chat/ImageSelector';
 
 
 const mapStateToProps = state => {
-    const { currentImages, showImages, selectedImage } = state.imagesFromCR;
+    const { currentImages, showImages, selectedImage, photoUrl } = state.imagesFromCR;
+    const { currentChatRoom } = state.chatRooms;
     return (
         {
             currentImages,
             showImages,
-            selectedImage
+            selectedImage,
+            currentChatRoom,
+            photoUrl
             // selectedImages
         }
     );
@@ -34,9 +38,12 @@ const mapDispatchToProps = dispatch => {
             selectImageToSend: (imageToSend) => {
                 dispatch(selectImageToSend(imageToSend));
             },
-            sendImage: (imageToSend) => {
-                dispatch(sendSelectedImages(imageToSend));
-            }
+            sendImage: (imageToSend, currentChatRoom) => {
+                dispatch(sendSelectedImages(imageToSend, currentChatRoom));
+            },
+          //   sendMessage: (type, content, currentChatRoom) => {
+          //     dispatch(sendMessage(type, content, currentChatRoom));
+          // }
         }
     );
 };

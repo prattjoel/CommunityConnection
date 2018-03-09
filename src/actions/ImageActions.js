@@ -53,7 +53,7 @@ export const selectImageToSend = imageToSend => {
 // console.log(key);
 // const secret = Config.ACCESS_SECRET;
 // console.log(secret);
-
+// debugger;
 const imageOptions = {
     keyPrefix: 'message_images/',
     bucket: 'community-connect-image-store',

@@ -7,30 +7,58 @@ import {
   Image
 } from 'react-native';
 
+// TODO:
+//Add image to messages if url is present
 const MessageText = (props) => {
-    return (
-      <View style={styles.containerStyle}>
-        <Image
-          source={require('../../assets/profilePlaceholder.png')}
-          style={{ width: 20, height: 20 }}
-        />
-        <View>
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.nameStyle}>
-              {props.name}
-            </Text>
-            <Text style={styles.timestampStyle}>
-              {props.timestamp}
-            </Text>
+
+    if (props.photoUrl) {
+        return (
+          <View style={styles.containerStyle}>
+            <Image
+              source={require('../../assets/profilePlaceholder.png')}
+              style={{ width: 20, height: 20 }}
+            />
+            <View>
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={styles.nameStyle}>
+                  {props.name}
+                </Text>
+                <Text style={styles.timestampStyle}>
+                  {props.timestamp}
+                </Text>
+              </View>
+              <Image
+                source={{ uri: props.photoUrl }}
+                style={{ width: 40, height: 40 }}
+              />
+            </View>
           </View>
-          <Text
-            style={styles.textStyle}
-          >
-            {props.children}
-          </Text>
-        </View>
-      </View>
-    );
+        );
+    } else {
+        return (
+          <View style={styles.containerStyle}>
+            <Image
+              source={require('../../assets/profilePlaceholder.png')}
+              style={{ width: 20, height: 20 }}
+            />
+            <View>
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={styles.nameStyle}>
+                  {props.name}
+                </Text>
+                <Text style={styles.timestampStyle}>
+                  {props.timestamp}
+                </Text>
+              </View>
+              <Text
+                style={styles.textStyle}
+              >
+                {props.children}
+              </Text>
+            </View>
+          </View>
+        );
+    }
 };
 
 const styles = {

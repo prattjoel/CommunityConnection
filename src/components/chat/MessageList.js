@@ -34,14 +34,24 @@ export default class MessageList extends Component {
      // TODO: display image messages if message in database has url
     // TODO: create custom list item and render user's info along with message content
     // debugger;
-    return (
-      <MessageText
-        timestamp={item.timestamp}
-        name={item.name}
-      >
-        {item.message}
-      </MessageText>
-    );
+    if (item.message) {
+        return (
+          <MessageText
+            timestamp={item.timestamp}
+            name={item.name}
+          >
+            {item.message}
+          </MessageText>
+        );
+    } else {
+        return (
+          <MessageText
+            timestamp={item.timestamp}
+            name={item.name}
+            photoUrl={item.photoUrl}
+          />
+        );
+    }
   };
 
   renderHeader = () => {

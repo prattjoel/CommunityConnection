@@ -27,10 +27,12 @@ const MessageText = (props) => {
                   {props.timestamp}
                 </Text>
               </View>
-              <Image
-                source={{ uri: props.photoUrl }}
-                style={{ width: 40, height: 40 }}
-              />
+              <View style={{ paddingTop: 5, paddingBottom: 5 }}>
+                  <Image
+                    source={{ uri: props.photoUrl }}
+                    style={{ width: 200, height: 200 }}
+                  />
+              </View>
             </View>
           </View>
         );

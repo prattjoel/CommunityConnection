@@ -25,10 +25,11 @@ export default class ImageSelector extends Component {
     // }
 
     onPressDoneButton = () => {
-        if (this.props.selectedImage) {
+        if (this.props.selectedImage.isSelected) {
             // debugger;
             this.props.sendImage(this.props.selectedImage, this.props.currentChatRoom);
         }
+        this.props.cancelImages();
     }
     onPressCancelButton = () => {
         this.props.cancelImages();

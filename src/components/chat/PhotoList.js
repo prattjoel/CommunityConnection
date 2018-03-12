@@ -38,10 +38,16 @@ export default class PhotoList extends Component {
 
     highlightImage = (item) => {
         // debugger;
-        const opacityValue = (item.isSelected ? 0.5 : 1.0);
-        // const newStyle = { ...styles.imageStyle, opacity: opacityValue };
-        const newStyle = { opacity: opacityValue };
-        return newStyle;
+        if (item.filename === this.props.selectedImage.filename) {
+            const selectedStyle = { opacity: 0.5 };
+            return selectedStyle;
+        }
+        const notSelectedStyle = { opacity: 1.0 };
+        return notSelectedStyle;
+        // const opacityValue = (item.isSelected ? 0.5 : 1.0);
+        // // const newStyle = { ...styles.imageStyle, opacity: opacityValue };
+        // const newStyle = { opacity: opacityValue };
+        // return newStyle;
         // const index = this.props.selectedImages.map((image) => image.filename)
         // .indexOf(item.filename);
         //
@@ -52,7 +58,7 @@ export default class PhotoList extends Component {
     }
 
     showSelected = (item) => {
-        if (item.isSelected) {
+        if (item.filename === this.props.selectedImage.filename) {
             return (
                 <Text style={styles.selectedStyle}>
                     Selected

@@ -38,9 +38,10 @@ export default class PhotoList extends Component {
 
     highlightImage = (item) => {
         // debugger;
+        console.log(this.props.selectedImage);
         if (item.filename === this.props.selectedImage.filename) {
-            const selectedStyle = { opacity: 0.5 };
-            return selectedStyle;
+                const selectedStyle = { opacity: 0.5 };
+                return selectedStyle;
         }
         const notSelectedStyle = { opacity: 1.0 };
         return notSelectedStyle;

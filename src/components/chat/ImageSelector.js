@@ -30,6 +30,9 @@ export default class ImageSelector extends Component {
             this.props.sendImage(this.props.selectedImage, this.props.currentChatRoom);
         }
     }
+    onPressCancelButton = () => {
+        this.props.cancelImages();
+    }
 
     onShowImages = () => {
         console.log('currentImages in onShowImages of ImageSelector: ');
@@ -56,6 +59,11 @@ export default class ImageSelector extends Component {
                             onPress={this.onPressDoneButton.bind(this)}
                         >
                             Done
+                        </Button>
+                        <Button
+                            onPress={this.onPressCancelButton.bind(this)}
+                        >
+                            Cancel
                         </Button>
                     </View>
                 </View>

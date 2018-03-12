@@ -4,7 +4,8 @@ import {
     SET_CURRENT_IMAGES,
     SHOW_IMAGE_SELECTOR,
     SELECT_IMAGE_TO_SEND,
-    IMAGE_UPLOADED
+    IMAGE_UPLOADED,
+    CANCEL_IMAGE_SELECTION
     // UNSELECT_IMAGE_TO_SEND
 } from '../constants/ImageTypes';
 
@@ -47,6 +48,8 @@ export default (state = initialState, action) => {
         case IMAGE_UPLOADED:
             // debugger;
             return { ...initialState, photoUrl: action.payload };
+        case CANCEL_IMAGE_SELECTION:
+            return initialState;
         default:
             return state;
     }

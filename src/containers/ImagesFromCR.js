@@ -5,7 +5,8 @@ import {
     setCurrentImages,
     toggleImageSelector,
     selectImageToSend,
-    sendSelectedImages
+    sendSelectedImages,
+    cancelImages
 } from '../actions/ImageActions';
 import { sendMessage } from '../actions/MessageActions';
 import ImageSelector from '../components/chat/ImageSelector';
@@ -41,6 +42,9 @@ const mapDispatchToProps = dispatch => {
             sendImage: (imageToSend, currentChatRoom) => {
                 dispatch(sendSelectedImages(imageToSend, currentChatRoom));
             },
+            cancelImages: () => {
+                dispatch(cancelImages());
+            }
           //   sendMessage: (type, content, currentChatRoom) => {
           //     dispatch(sendMessage(type, content, currentChatRoom));
           // }

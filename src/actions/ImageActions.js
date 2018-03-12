@@ -6,7 +6,8 @@ import {
     SET_CURRENT_IMAGES,
     SHOW_IMAGE_SELECTOR,
     SELECT_IMAGE_TO_SEND,
-    IMAGE_UPLOADED
+    IMAGE_UPLOADED,
+    CANCEL_IMAGE_SELECTION
 } from '../constants/ImageTypes';
 import {
     prepareMessageToSend,
@@ -46,6 +47,14 @@ export const selectImageToSend = imageToSend => {
             payload: updatedImage
         }
     );
+};
+
+export const cancelImages = () => {
+        return (
+            {
+                type: CANCEL_IMAGE_SELECTION
+            }
+        );
 };
 
 // debugger;

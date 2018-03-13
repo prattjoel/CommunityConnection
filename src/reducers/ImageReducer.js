@@ -26,12 +26,11 @@ export default (state = initialState, action) => {
         // console.log(action.payload);
             return { ...state, showImages: action.payload };
         case SELECT_IMAGE_TO_SEND:
-        // TODO:
+        // TODO: DONE
         // 1. restructure reducer to reflect single image selection.
         // 2. enable unselecting
         // debugger;
             {
-                // const selectedImages = state.selectedImages;
                 const index = state.currentImages.map((image) => image.filename)
                 .indexOf(action.payload.filename);
                 if (index === -1) {
@@ -43,14 +42,11 @@ export default (state = initialState, action) => {
                         return currentImage;
                     });
                     updatedImages[index] = action.payload;
-                    // const currentSelectedImages = selectedImages.splice(index, 1);
                     return {
                         ...state,
                         currentImages: updatedImages,
                         selectedImage: action.payload
                     };
-                // selectedImages.push(action.payload);
-                // return { ...state, selectedImages };
             }
         case IMAGE_UPLOADED:
             // debugger;

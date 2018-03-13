@@ -59,7 +59,7 @@ export default class ImageSelector extends Component {
                         <Button
                             onPress={this.onPressDoneButton.bind(this)}
                         >
-                            Done
+                            Send
                         </Button>
                         <Button
                             onPress={this.onPressCancelButton.bind(this)}
